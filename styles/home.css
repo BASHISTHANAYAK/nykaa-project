@@ -1,5 +1,7 @@
 body {
   margin: 0px;
+  width: 99.5%;
+  margin: auto;
 }
 .middleAndSmall-screen-header {
   display: none;
@@ -63,6 +65,7 @@ nav > section {
   align-items: center;
 }
 nav > section:first-child {
+  border: 1px solid red;
   padding: 0px 0px 0px 5%;
   display: flex;
   align-items: center;
@@ -192,68 +195,178 @@ nav > section:last-child {
   color: #82818d;
 }
 
-/* slider CSS */
+.First-purchase-offer-div {
+  border: 1px solid blue;
+  width: 100%;
+}
+.First-purchase-offer-div > img {
+  width: 100%;
+}
 
-.Slider-container {
+.Brand-in-Focus {
+  border: 1px solid red;
+}
+
+.Brand-in-Focus > h2 {
+  margin: 0px 0px 0px 5%;
+}
+
+/* Explore-Top-Brands */
+.Explore-Top-Brands {
   border: 1px solid;
-  max-width: 1200px;
-  width: 95%;
-  margin: auto;
-  padding: 1%;
+  width: 100%;
+  background-color: #f3f4f6;
+  /* height: 400px; */
+  padding: 20px 0 0 0;
+  margin-top: 30px;
 }
 
-.slider-wrapper {
-  position: relative;
+.Explore-Top-Brands h2,
+p {
+  margin: 0 0 0 5%;
 }
-
-.slider-wrapper .slide-button {
-  position: absolute;
-  top: 50%;
-  outline: none;
+.Explore-Top-Brands hr {
+  width: 90%;
+  height: 2px;
+  background-color: #dedfe1;
   border: none;
-  height: 50px;
-  width: 50px;
-  z-index: 5;
-  color: #5c6874;
+  margin-top: 15px;
+}
+
+/* frizz-free-hair */
+.frizz-free-hair {
+  border: 1px dotted green;
+  width: 90%;
+  margin: auto;
+}
+.frizz-free-hair > img {
+  width: 100%;
+}
+
+/* Steallar sections */
+.three-Stellar-divs-Container {
+  border: 2px solid red;
+  width: 90%;
   display: flex;
-  cursor: pointer;
-  font-size: 2.2rem;
-  background: white;
   align-items: center;
   justify-content: center;
-  border-radius: 50%;
-  transform: translateY(-50%);
+  margin: auto;
+  gap: 30px;
 }
-
-.slider-wrapper .slide-button:hover {
-  background: #f9f8f8;
-}
-
-.slider-wrapper .slide-button#prev-slide {
-  left: -25px;
-  display: none;
-}
-
-.slider-wrapper .slide-button#next-slide {
-  right: -25px;
-}
-
-.slider-wrapper .image-list {
-  display: grid;
-  grid-template-columns: repeat(10, 1fr);
-  gap: 10px;
-  font-size: 0;
-  list-style: none;
-  /* margin-bottom: 30px; */
-  overflow-x: auto;
-  scrollbar-width: none;
-}
-
-.slider-wrapper .image-list .image-item {
-  width: 425px;
-  height: 400px;
-  object-fit: cover;
+.three-Stellar-divs-Container > div {
+  border: 1px solid;
   border-radius: 10px;
+}
+.three-Stellar-divs-Container > div > img {
+  height: 380px;
+  border-radius: 10px;
+}
+.three-Stellar-divs-Container > div > h3,
+h4 {
+  margin: 3px;
+}
+.All-Eyes-OnYou {
+  width: 100%;
+}
+.All-Eyes-OnYou > img {
+  width: 100%;
+}
+
+/* footer part  */
+.footer {
+  border: 2px solid blue;
+  width: 100%;
+  height: 650px;
+}
+.brown-Section {
+  border: 1px dotted red;
+  height: 50px;
+  width: 100%;
+  background-color: #f3f3f3;
+}
+.mail-And-Download {
+  height: 150px;
+  background-color: #3a4047;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.mail-And-Download > div {
+  border: 1px solid wheat;
+  width: 330px;
+  color: white;
+  padding: 5px;
+}
+
+.email-ANd-input > p {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 5px;
+  margin-top: 10px;
+}
+.email-ANd-input > p > input {
+  padding: 10px;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid white;
+}
+.email-ANd-input > p > button {
+  padding: 10px;
+  background-color: transparent;
+  color: white;
+  border: none;
+  border: 1px solid white;
+}
+
+.download-Apps > p {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px;
+  margin-top: 7px;
+}
+
+.download-Apps img {
+  width: 140px;
+}
+
+.call-div > p {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  margin-top: 7px;
+}
+.daysInfo {
+  margin-left: 35px;
+}
+.Footer-Links {
+  border: 1px solid red;
+  height: 400px;
+  background-color: #8c8d94;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.Footer-Links > ul {
+  list-style: none;
+}
+.Footer-Links > ul a {
+  text-decoration: none;
+  color: white;
+  font-size: 13px;
+}
+.Footer-Links > ul > li {
+  padding: 7px;
+}
+.Footer-Links > ul > li b {
+  font-size: 17px;
+  color: white;
+}
+.Footer-Links > ul > li > img {
+  width: 70px;
+  margin-bottom: 25px;
 }
 
 @media screen and (max-width: 1060px) {
