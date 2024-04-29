@@ -1,0 +1,298 @@
+body {
+  margin: 0px;
+}
+.middleAndSmall-screen-header {
+  display: none;
+}
+.scroller--And--options--div {
+  border: 1px solid black;
+  height: 48px;
+  background-image: url(https://images-static.naikaa.com/media/wysiwyg/2021/common-strip.jpg);
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.scroller--And--options--div > section {
+  border: 1px solid;
+}
+.scroller--And--options--div > section:first-child {
+  padding: 0px 0px 0px 5%;
+}
+.scroller--And--options--div > section:last-child {
+  padding: 0px 5% 0px 0px;
+}
+.options-sections > ul {
+  border: 1px solid white;
+  display: flex;
+  list-style: none;
+  align-items: center;
+  justify-content: center;
+}
+.options-sections > ul > b {
+  padding: 0px 15px;
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+.options-sections > ul > li {
+  border: 1px solid;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.options-sections > ul > li > a {
+  text-decoration: none;
+}
+.options-sections > ul > li i {
+  margin-right: 5px;
+}
+
+/* second nav css */
+nav {
+  border-bottom: 1px solid;
+  height: 65px;
+  margin-top: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+nav > section {
+  /* border: 1px solid red; */
+  display: flex;
+  align-items: center;
+}
+nav > section:first-child {
+  padding: 0px 0px 0px 5%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bolder;
+  gap: 20px;
+}
+nav .Nykaa-Logo {
+  height: 30px;
+}
+nav > section:first-child > p {
+  border: 1px dotted blue;
+}
+nav > section:last-child {
+  padding: 0px 5% 0px 0px;
+  gap: 10px;
+}
+.search-div {
+  /* border: 1px dotted green; */
+  background-color: #f4f4f4;
+  display: flex;
+  align-items: center;
+}
+.search-div i {
+  margin-right: 5px;
+}
+.search-div > input {
+  height: 34px;
+  width: 200px;
+  border: none;
+  background-color: #f4f4f4;
+}
+.search-div > input:focus {
+  outline: none;
+}
+.searrch-SignIn-Bag > button {
+  height: 40px;
+  padding: 2px 17px;
+  background-color: #e80071;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  letter-spacing: 0.1px;
+  cursor: pointer;
+}
+.fa-bag-shopping {
+  /* margin-left:9%; */
+  margin-left: 15px;
+  font-size: 25px;
+}
+
+/* .middleAndSmall-screen-header  CSS *****************************/
+.middleAndSmall-screen-header {
+  /* background-color: rgb(243, 243, 243); */
+  padding: 0px 0px 5px 0px;
+  box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -7px;
+}
+.middleAndSmall-screen-header > section:first-child {
+  border: 1px solid red;
+  height: 37px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0px 10px;
+}
+.middleAndSmall-screen-header > section:first-child > div {
+  border: 1px solid green;
+  display: flex;
+}
+
+.hamberger-logo-div img {
+  width: 55px;
+  margin-left: 15px;
+}
+.bag-profile-div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 25px;
+}
+.middleAndSmall-screen-header > section:last-child {
+  border: 1px dotted blue;
+  height: 40px;
+  padding: 0px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.search-box-container {
+  width: 95%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  border-radius: 20px;
+  background-color: #f3f4f5;
+  padding: 0px 12px;
+}
+.search-box-container > i {
+  color: #e9318b;
+}
+.search-box-container > input {
+  border: none;
+  padding: 10px;
+  width: 100%;
+  background-color: transparent;
+  border-bottom: 1px solid #d5d9dc;
+}
+
+/* Diff-product-types-options */
+.Diff-product-types-options {
+  /* border: 1px solid; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2%;
+  height: 55px;
+  box-shadow: rgba(33, 35, 38, 0.3) 0px 10px 10px -10px;
+}
+.Diff-product-types-options > li {
+  list-style: none;
+  border: 1px solid;
+}
+
+.Diff-product-types-options > li > a {
+  text-decoration: none;
+  color: #82818d;
+}
+
+/* slider CSS */
+
+.Slider-container {
+  border: 1px solid;
+  max-width: 1200px;
+  width: 95%;
+  margin: auto;
+  padding: 1%;
+}
+
+.slider-wrapper {
+  position: relative;
+}
+
+.slider-wrapper .slide-button {
+  position: absolute;
+  top: 50%;
+  outline: none;
+  border: none;
+  height: 50px;
+  width: 50px;
+  z-index: 5;
+  color: #5c6874;
+  display: flex;
+  cursor: pointer;
+  font-size: 2.2rem;
+  background: white;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transform: translateY(-50%);
+}
+
+.slider-wrapper .slide-button:hover {
+  background: #f9f8f8;
+}
+
+.slider-wrapper .slide-button#prev-slide {
+  left: -25px;
+  display: none;
+}
+
+.slider-wrapper .slide-button#next-slide {
+  right: -25px;
+}
+
+.slider-wrapper .image-list {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  gap: 10px;
+  font-size: 0;
+  list-style: none;
+  /* margin-bottom: 30px; */
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.slider-wrapper .image-list .image-item {
+  width: 425px;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+@media screen and (max-width: 1060px) {
+  .scroller--And--options--div > section:first-child {
+    padding: 2px;
+  }
+  .scroller--And--options--div > section:last-child {
+    padding: 2px;
+  }
+  nav > section:first-child {
+    padding: 2px;
+    gap: 10px;
+  }
+  nav > section:last-child {
+    padding: 2px;
+    gap: 10px;
+  }
+  .fa-bag-shopping {
+    margin-left: 0px;
+  }
+
+  /* slider */
+
+  .slider-wrapper .image-list {
+    gap: 10px;
+    margin-bottom: 15px;
+    scroll-snap-type: x mandatory;
+  }
+
+  .slider-wrapper .image-list .image-item {
+    width: 280px;
+    height: 380px;
+  }
+}
+@media screen and (max-width: 897px) {
+  .big-screen-header {
+    display: none;
+  }
+  .middleAndSmall-screen-header {
+    display: block;
+  }
+}
