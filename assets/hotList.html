@@ -1,0 +1,407 @@
+<section class="product">
+  <div class="HotList-ViewAll-Div">
+    <div class="HotList">
+      <h1>Hot List <span>Bestseller</span></h1>
+      <p>Nukaa's Super Seller</p>
+    </div>
+    <h4 class="ViewAll">View All &#8594;</h4>
+  </div>
+  <hr />
+
+  <div class="Options-TO-Filter">
+    <button class="Option-Buttons">All</button>
+    <button class="Option-Buttons">Markup</button>
+    <button class="Option-Buttons">Skin</button>
+    <button class="Option-Buttons">Bath & Body</button>
+    <button class="Option-Buttons">Hair</button>
+  </div>
+  <button class="pre-btn"><img src="../images/arrow.png" alt="" /></button>
+  <button class="nxt-btn"><img src="../images/arrow.png" alt="" /></button>
+  <div class="product-container"></div>
+</section>
+<script>
+  let produtsArray = [
+    {
+      productName:
+        "Love Beauty & Planet Argan Oil And Lavender Sulphate Free Shampoo For Dry & Frizzy Hair",
+      quantity: 400,
+      price: 553,
+      rating: 4.3,
+      totalRatings: 28.86,
+      totalReviews: 2042,
+      MRP: 650,
+      discount: "15% off",
+      highLight: "NEW",
+      image:
+        "https://images-static.nykaa.com/media/catalog/product/b/4/b4342aeBIOT_HRCL_1.jpg",
+      productType: "Hair",
+    },
+    {
+      productName: "Pilgrim Redensyl & Anagain Advanced Hair Growth Serum ",
+      quantity: 50,
+      price: 823,
+      rating: 4.3,
+      totalRatings: 81.86,
+      totalReviews: 2042,
+      MRP: 650,
+      discount: "15% off",
+      image:
+        "https://images-static.nykaa.com/media/catalog/product/b/f/bf5d6efPILGR00000020a_1.jpg?tr=w-344,h-344,cm-pad_resize",
+      highLight: "bestSeller",
+      productType: "Hair",
+    },
+    {
+      productName: "d'you unkissed Serum Sunscreen SPF 50 & PA++++",
+      quantity: 30,
+      price: 823,
+      rating: 4.3,
+      totalRatings: 28.18,
+      totalReviews: 2042,
+      MRP: 650,
+      discount: "15% off",
+      image:
+        "https://images-static.nykaa.com/media/catalog/product/2/3/23cf730DYOUX00000013_1.jpg",
+      highLight: "bestSeller",
+      productType: "skin",
+    },
+    {
+      productName:
+        "Nykaa Cosmetics Eyes On Me! 4 in 1 Quad Eyeshadow Palette - Sunset Stroll",
+      quantity: 40,
+      price: 823,
+      rating: 4.3,
+      totalRatings: 1.86,
+      totalReviews: 2042,
+      MRP: 650,
+      discount: "15% off",
+      image:
+        "https://images-static.nykaa.com/media/catalog/product/e/5/e5d4fedNYKAC00000373_1.jpg?tr=w-344,h-344,cm-pad_resize",
+      highLight: "OFFER",
+      productType: "Makeup",
+    },
+    {
+      productName:
+        "Smashbox Halo Healthy Glow All-In-One Tinted Moisturizer Foundation With Hyaluronic Acid, Niacinamide & Spf 25 - Light Neutral",
+      quantity: 90,
+      price: 3510,
+      rating: 4.5,
+      totalRatings: 1.17,
+      totalReviews: 257,
+      MRP: 3510,
+      discount: "15% off",
+      image:
+        "https://images-static.nykaa.com/media/catalog/product/8/e/8efee3e607710089631_1.jpg?tr=w-344,h-344,cm-pad_resize",
+      highLight: "bestSeller",
+      productType: "Skin",
+    },
+    {
+      productName:
+        "Simple Kind to Skin Refreshing Facewash Mild Face Wash for Sensitive Skin ",
+      quantity: 150,
+      price: 347,
+      rating: 4,
+      totalRatings: 59.5,
+      MRP: 347,
+      discount: "15% off",
+      image:
+        "https://images-static.nykaa.com/media/catalog/product/0/d/0df681b27278_H-8901030954115.jpg?tr=w-344,h-344,cm-pad_resize",
+      highLight: "OFFER",
+      productType: "Bath & Body",
+    },
+  ];
+
+  let productContainer = document.querySelector(".product-container");
+  // creating div/box to add in the slider
+  produtsArray.forEach((obj) => {
+    // creating entire single product div which has 2 another div
+    let aProductDetails = document.createElement("div");
+    aProductDetails.classList.add("product-card");
+
+    //creating a div that will contain image
+    let productImageDiv = document.createElement("div");
+    productImageDiv.classList.add("product-image");
+
+    // span
+    let span = document.createElement("span");
+    span.classList.add("discount-tag");
+    span.innerText = obj.highLight;
+    //img
+    let img = document.createElement("img");
+    img.classList.add("product-thumb");
+    img.src = obj.image;
+    //p tag
+    let ratingPTag = document.createElement("p");
+    ratingPTag.classList.add("card-btn");
+    ratingPTag.innerText = `${obj.rating} /5 ${obj.totalRatings}k`;
+
+    productImageDiv.append(span, img, ratingPTag);
+
+    //another div that will contain other details
+    let productInfoDiv = document.createElement("div");
+    productInfoDiv.classList.add("product-info");
+
+    //detail p tag
+    let productName = document.createElement("p");
+    productName.classList.add("product-brand", "product-small-details");
+    productName.innerText = obj.productName;
+
+    // product quantity
+    let productQuantity = document.createElement("p");
+    productQuantity.classList.add("product-short-description");
+    productQuantity.innerText = `${obj.quantity}ml`;
+
+    // 3 spans for price,off and previous price
+    let priceSpan = document.createElement("span");
+    priceSpan.classList.add("price");
+    priceSpan.innerText = `₹${obj.price}`;
+    //previous price
+    let previousPrice = document.createElement("span");
+    previousPrice.classList.add("actual-price");
+    previousPrice.innerText = `₹${obj.MRP}`;
+    //Discount-Available
+    let Discount = document.createElement("span");
+    Discount.classList.add("Discount-Available");
+    Discount.innerText = obj.discount;
+
+    productInfoDiv.append(
+      productName,
+      productQuantity,
+      priceSpan,
+      previousPrice,
+      Discount
+    );
+
+    // append above both div to its container aProductDetails
+    aProductDetails.append(productImageDiv, productInfoDiv);
+    productContainer.append(aProductDetails);
+  });
+
+  const productContainers = [
+    ...document.querySelectorAll(".product-container"),
+  ];
+  const nxtBtn = [...document.querySelectorAll(".nxt-btn")];
+  const preBtn = [...document.querySelectorAll(".pre-btn")];
+
+  productContainers.forEach((item, i) => {
+    let containerDimensions = item.getBoundingClientRect();
+    let containerWidth = containerDimensions.width;
+    console.log(containerWidth);
+    nxtBtn[i].addEventListener("click", () => {
+      item.scrollLeft += containerWidth;
+    });
+
+    preBtn[i].addEventListener("click", () => {
+      item.scrollLeft -= containerWidth;
+    });
+  });
+</script>
+<style>
+  .HotList-ViewAll-Div {
+    border: 1px solid green;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .HotList > h1,
+  p {
+    margin: 2px;
+  }
+  .HotList > h1 > span {
+    padding: 2px 4px;
+    background-color: #e6f7fe;
+    font-size: 12px;
+    border-radius: 30px;
+  }
+  .ViewAll {
+    color: #ec477f;
+  }
+  hr {
+    border-color: #fafafa;
+    height: 2px;
+    background-color: #f0e9e9;
+    border: none;
+  }
+  .Option-Buttons {
+    background-color: white;
+    border: none;
+    padding: 4px 8px;
+    margin-left: 15px;
+    border: 1px solid;
+    border-radius: 20px;
+    color: #5c6873;
+    transform: scale(1.2);
+    margin-top: 12px;
+  }
+
+  .Option-Buttons:focus {
+    color: rgb(232, 0, 113);
+    border: 1px solid rgb(232, 0, 113);
+    background-color: rgb(253, 235, 244);
+    transform: scale(1);
+    transition: 0.15s;
+  }
+
+  /* PRODUCTS */
+  .product {
+    border: 1px solid red;
+    position: relative;
+    overflow: hidden;
+    padding: 10px;
+  }
+
+  .product-container {
+    border: 2px solid blue;
+    /* padding: 0 10vw; */
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    gap: 20px;
+    padding: 4px;
+    margin-top: 20px;
+  }
+
+  .product-container::-webkit-scrollbar {
+    display: none;
+  }
+
+  .product-card {
+    border: 2px dotted green;
+    flex: 0 0 auto;
+    width: 210px;
+    /* height: 350px; */
+    padding: 5px;
+    /* margin-right: 40px; */
+  }
+
+  /* img div */
+  .product-image {
+    position: relative;
+    height: 230px;
+    overflow: hidden;
+  }
+
+  /* image img */
+  .product-thumb {
+    display: block;
+    width: 100%;
+    object-fit: cover;
+    margin: auto;
+    background-color: transparent;
+  }
+
+  .discount-tag {
+    position: absolute;
+    background: #fff;
+    padding: 1px 3px;
+    border-radius: 2px;
+    color: #5c6874;
+    left: 10px;
+    top: 10px;
+    font-size: 13px;
+    background-color: #f5f5f6;
+  }
+
+  .card-btn {
+    position: absolute;
+    bottom: 10px;
+    left: 3%;
+    padding: 3px 5px;
+    /* width: 90%; */
+    text-transform: capitalize;
+    border: none;
+    outline: none;
+    background: #fff;
+    border-radius: 3px;
+    transition: 0.5s;
+    cursor: pointer;
+    background-color: #f5f5f6;
+  }
+
+  .product-card:hover {
+    opacity: 1;
+  }
+
+  .product-info {
+    border: 1px solid rgb(8, 242, 86);
+    width: 100%;
+    /* height: 100px; */
+    padding-top: 10px;
+  }
+
+  /* product-small-details */
+  .product-brand {
+    margin: 0;
+    padding: 0;
+    border: 1px solid red;
+    height: 40px;
+    width: 90%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  .product-info p {
+    margin: 3px 0px 5px 0px;
+  }
+  .Discount-Available {
+    color: green;
+  }
+  .product-short-description {
+    width: 100%;
+    /* height: 20px; */
+    line-height: 20px;
+    overflow: hidden;
+    opacity: 0.5;
+    text-transform: capitalize;
+    margin: 0;
+  }
+
+  .price {
+    font-weight: 900;
+    /* font-size: 20px; */
+  }
+
+  .actual-price {
+    margin-left: 7px;
+    opacity: 0.5;
+    text-decoration: line-through;
+  }
+
+  .pre-btn,
+  .nxt-btn {
+    border: 1px solid;
+    border: none;
+    /* width: 10vw; */
+    /* height: 100%; */
+    position: absolute;
+    top: 56%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, #fff 100%);
+    cursor: pointer;
+    z-index: 8;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+  }
+
+  .pre-btn {
+    left: 0;
+    transform: rotate(180deg);
+  }
+
+  .nxt-btn {
+    right: 0;
+  }
+
+  .pre-btn img,
+  .nxt-btn img {
+    opacity: 0.8;
+  }
+
+  .pre-btn:hover img,
+  .nxt-btn:hover img {
+    opacity: 1;
+  }
+</style>

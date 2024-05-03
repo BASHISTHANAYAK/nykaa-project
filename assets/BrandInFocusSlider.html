@@ -1,0 +1,120 @@
+<div class="second_slider-wrapper">
+  <button id="prev-slide" class="slide-button material-symbols-rounded">
+    chevron_left
+  </button>
+  <ul class="image-list">
+    <img
+      class="image-item"
+      src="https://images-static.nykaa.com/uploads/2caa2aa9-7079-41cc-bb6e-f36415a2aed9.jpg?tr=cm-pad_resize,w-1800"
+      alt="img-1"
+    />
+    <img
+      class="image-item"
+      src="https://images-static.nykaa.com/uploads/7e0bf5d4-81cd-4e86-8c62-eed27c09831c.jpg?tr=cm-pad_resize,w-1800"
+      alt="img-2"
+    />
+    <img
+      class="image-item"
+      src="https://images-static.nykaa.com/uploads/c7508a95-6209-499c-943c-1440eddaa93f.jpg?tr=cm-pad_resize,w-1800"
+      alt="img-3"
+    />
+  </ul>
+  <button id="next-slide" class="slide-button material-symbols-rounded">
+    chevron_right
+  </button>
+</div>
+<div class="slider-scrollbar">
+  <div class="scrollbar-track">
+    <div class="scrollbar-thumb"></div>
+  </div>
+</div>
+
+<style>
+  /* slider CSS */
+
+  .Second-image-scroll-Slider-container {
+    border: 1px solid blue;
+    /* max-width: 1200px; */
+    width: 95%;
+    margin: auto;
+    /* padding: 1%; */
+    padding: 0;
+  }
+
+  .Second-image-scroll-Slider-container .second_slider-wrapper {
+    position: relative;
+  }
+
+  .Second-image-scroll-Slider-container .second_slider-wrapper .slide-button {
+    position: absolute;
+    top: 50%;
+    outline: none;
+    border: none;
+    height: 50px;
+    width: 50px;
+    z-index: 5;
+    color: #5c6874;
+    display: flex;
+    cursor: pointer;
+    font-size: 2.2rem;
+    background: white;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transform: translateY(-50%);
+  }
+
+  .Second-image-scroll-Slider-container
+    .second_slider-wrapper
+    .slide-button:hover {
+    background: #f9f8f8;
+  }
+
+  .Second-image-scroll-Slider-container
+    .second_slider-wrapper
+    .slide-button#prev-slide {
+    left: -25px;
+    display: none;
+  }
+
+  .Second-image-scroll-Slider-container
+    .second_slider-wrapper
+    .slide-button#next-slide {
+    right: -25px;
+  }
+
+  .Second-image-scroll-Slider-container .second_slider-wrapper .image-list {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    /* gap: 10px; */
+    font-size: 0;
+    list-style: none;
+    overflow: auto;
+    scrollbar-width: none;
+    overflow: hidden;
+  }
+
+  .Second-image-scroll-Slider-container
+    .second_slider-wrapper
+    .image-list
+    .image-item {
+    width: 90vw;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+
+  /* Media query ******************* */
+  @media screen and (max-width: 1060px) {
+  }
+
+  /* middle and small screen */
+  @media screen and (max-width: 897px) {
+    .Second-image-scroll-Slider-container
+      .second_slider-wrapper
+      .image-list
+      .image-item {
+      height: 150px;
+    }
+  }
+</style>

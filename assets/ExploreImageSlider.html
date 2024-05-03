@@ -1,0 +1,147 @@
+<div class="Explore-image-scoler-Slider-container">
+  <div class="Explore_slider-wrapper">
+    <button id="prev-slide" class="slide-button material-symbols-rounded">
+      chevron_left
+    </button>
+    <ul class="image-list">
+      <img
+        class="image-item"
+        src="https://images-static.nykaa.com/creatives/2278998d-5c38-4959-a6b1-5e23ab4c77d7/default.jpg?tr=cm-pad_resize,w-900"
+        alt="img-1"
+      />
+      <img
+        class="image-item"
+        src="https://images-static.nykaa.com/creatives/b2c96100-fd67-4f1d-89b2-e010bd5a837c/default.jpg?tr=cm-pad_resize,w-900"
+        alt="img-2"
+      />
+      <img
+        class="image-item"
+        src="https://images-static.nykaa.com/creatives/ddb41674-eb46-4047-993c-f058e798ac40/default.jpg?tr=cm-pad_resize,w-900"
+        alt="img-3"
+      />
+
+      <img
+        class="image-item"
+        src="https://images-static.nykaa.com/creatives/2278998d-5c38-4959-a6b1-5e23ab4c77d7/default.jpg?tr=cm-pad_resize,w-900"
+        alt="img-1"
+      />
+      <img
+        class="image-item"
+        src="https://images-static.nykaa.com/creatives/b2c96100-fd67-4f1d-89b2-e010bd5a837c/default.jpg?tr=cm-pad_resize,w-900"
+        alt="img-2"
+      />
+      <img
+        class="image-item"
+        src="https://images-static.nykaa.com/creatives/ddb41674-eb46-4047-993c-f058e798ac40/default.jpg?tr=cm-pad_resize,w-900"
+        alt="img-3"
+      />
+    </ul>
+    <button id="next-slide" class="slide-button material-symbols-rounded">
+      chevron_right
+    </button>
+  </div>
+  <div class="slider-scrollbar">
+    <div class="scrollbar-track">
+      <div class="scrollbar-thumb"></div>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* slider CSS */
+
+  .Explore-image-scoler-Slider-container {
+    border: 1px solid red;
+    max-width: 1200px;
+    width: 95%;
+    margin: auto;
+    padding: 1%;
+    margin: auto;
+  }
+
+  .Explore-image-scoler-Slider-container .Explore_slider-wrapper {
+    position: relative;
+  }
+
+  .Explore-image-scoler-Slider-container .Explore_slider-wrapper .slide-button {
+    position: absolute;
+    top: 50%;
+    outline: none;
+    border: none;
+    height: 50px;
+    width: 50px;
+    z-index: 5;
+    color: #5c6874;
+    display: flex;
+    cursor: pointer;
+    font-size: 2.2rem;
+    background: white;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transform: translateY(-50%);
+  }
+
+  .Explore-image-scoler-Slider-container
+    .Explore_slider-wrapper
+    .slide-button:hover {
+    background: #f9f8f8;
+  }
+
+  .Explore-image-scoler-Slider-container
+    .Explore_slider-wrapper
+    .slide-button#prev-slide {
+    left: -25px;
+    display: none;
+  }
+
+  .Explore-image-scoler-Slider-container
+    .Explore_slider-wrapper
+    .slide-button#next-slide {
+    right: -25px;
+  }
+
+  .Explore-image-scoler-Slider-container .Explore_slider-wrapper .image-list {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 10px;
+    font-size: 0;
+    list-style: none;
+    /* margin-bottom: 30px; */
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .Explore-image-scoler-Slider-container
+    .Explore_slider-wrapper
+    .image-list
+    .image-item {
+    width: 30vw;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+
+
+
+/* Media query ******************* */
+@media screen and (max-width: 1060px) {
+ 
+}
+
+/* middle and small screen */
+@media screen and (max-width: 897px) {
+  .Explore-image-scoler-Slider-container
+    .Explore_slider-wrapper
+    .image-list
+    .image-item {
+    min-width: 200px;
+    max-height: 260px;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+}
+
+
+
+  
+</style>
