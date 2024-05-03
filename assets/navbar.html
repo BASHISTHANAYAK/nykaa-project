@@ -47,7 +47,30 @@
         <i class="fa-regular fa-magnifying-glass"></i>
         <input type="text" placeholder="Search" />
       </div>
-      <button>Sign in</button>
+      <button class="nav-signIn">Sign in</button>
+
+      <!-- transparent-Container START-->
+      <div class="transparent-Container"></div>
+      <section class="Login-register-Box" id="Login-register-Box">
+        <h1>Login / Create Account</h1>
+        <h4>
+          Register now and get
+          <span>1000 Nykaa reward points instantly!</span>
+        </h4>
+        <button class="SignIn-with">
+          <a href="../pages/LoginOrSignUp/LoginOrSignUp.html"
+            >Sign in with Mobile / Email <span>&#8594;</span></a
+          >
+        </button>
+        <button class="Google-button">
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/1200px-Google_%22G%22_logo.svg.png"
+            alt=""
+          />Google
+        </button>
+      </section>
+      <!-- transparent-Container END-->
+
       <i class="fa-light fa-bag-shopping"></i>
     </section>
   </nav>
@@ -92,10 +115,30 @@
   </section>
 </header>
 
+<!-- JS part -->
+
+<script>
+  // onclik on nav-signIn button to open login
+  let navSignIn = document.querySelector(".nav-signIn"); //signin button
+  let transparentContainer = document.querySelector(".transparent-Container");
+  let LoginBox = document.querySelector(".Login-register-Box");
+
+  navSignIn.addEventListener("click", function () {
+    transparentContainer.style.display = "block";
+    LoginBox.style.display = "block";
+  });
+
+  //transparent-Container
+  transparentContainer.addEventListener("click", function () {
+    transparentContainer.style.display = "none";
+    LoginBox.style.display = "none";
+  });
+</script>
+
 <style>
   /* get apps help top section */
   .scroller--And--options--div {
-    border: 1px dotted black;
+    /* border: 1px dotted black; */
     height: 48px;
     background-image: url(https://images-static.naikaa.com/media/wysiwyg/2021/common-strip.jpg);
     background-position: center;
@@ -104,7 +147,7 @@
     justify-content: space-between;
   }
   .scroller--And--options--div > section {
-    border: 1px solid;
+    /* border: 1px solid; */
     display: flex;
     align-items: center;
   }
@@ -116,7 +159,7 @@
     height: 90%;
   }
   .options-sections > ul {
-    border: 1px solid white;
+    /* border: 1px solid white; */
     display: flex;
     list-style: none;
     align-items: center;
@@ -128,7 +171,7 @@
     font-size: 20px;
   }
   .options-sections > ul > li {
-    border: 1px solid;
+    /* border: 1px solid; */
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -143,14 +186,14 @@
 
   /* second nav css categories brands luxe part etc.... *******************************/
   nav {
-    border: 1px solid blue;
+    /* border: 1px solid blue; */
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 10px 0px;
   }
   nav > section {
-    border: 1px solid red;
+    /* border: 1px solid red; */
     display: flex;
     align-items: center;
   }
@@ -162,7 +205,7 @@
     height: 30px;
   }
   nav > .image-And-PagesLink > p {
-    border: 1px dotted blue;
+    /* border: 1px dotted blue; */
     margin: 0;
     padding: 0;
   }
@@ -206,17 +249,19 @@
 
   /* Diff-product-types-options ********/
   .Diff-product-types-options {
-    /* border: 1px solid; */
+    border: none;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 2.3%;
     height: 55px;
     box-shadow: rgba(33, 35, 38, 0.3) 0px 10px 10px -10px;
+    border-top: 1px solid #82818d;
   }
   .Diff-product-types-options > li {
     list-style: none;
-    border: 1px solid;
+    /* border: 1px solid; */
+    font-size: 14px;
   }
 
   .Diff-product-types-options > li > a {
@@ -231,7 +276,7 @@
     box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -7px;
   }
   .middleAndSmall-screen-header > section:first-child {
-    border: 1px solid red;
+    /* border: 1px solid red; */
     height: 37px;
     display: flex;
     align-items: center;
@@ -254,7 +299,7 @@
     gap: 25px;
   }
   .middleAndSmall-screen-header > section:last-child {
-    border: 1px dotted blue;
+    /* border: 1px dotted blue; */
     height: 40px;
     padding: 0px 10px;
     display: flex;
@@ -281,6 +326,99 @@
     background-color: transparent;
     border-bottom: 1px solid #d5d9dc;
   }
+
+  /* transparent-Container CSS START */
+  /* .transparent-Container,
+ */
+  .transparent-Container,
+  #Login-register-Box {
+    display: none;
+  }
+  .transparent-Container {
+    /* border: 3px solid red; */
+    background-color: rgba(157, 163, 157, 0);
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 100;
+  }
+  .Login-register-Box {
+    /* border: 2px solid red; */
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    background-color: white;
+    /* width: 330px; */
+    position: absolute;
+    right: 50px;
+    top: 120px;
+
+    /* padding: 30px 20px; */
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    z-index: 200;
+    padding: 33px 0px 33px 33px;
+  }
+  .Login-register-Box::before {
+    content: "";
+    width: 30px;
+    height: 30px;
+    background-color: white;
+    position: absolute;
+    top: -14px;
+    right: 18%;
+    transform: rotate(45deg);
+  }
+  .Login-register-Box * {
+    margin: 0;
+  }
+  .Login-register-Box > h1 {
+    /* border: 1px solid blue; */
+    width: 90%;
+    font-size: 22px;
+    font-weight: 400;
+  }
+  .Login-register-Box > h4 {
+    /* border: 1px solid red; */
+    margin-top: 6px;
+    color: #a4aab1;
+    width: 90%;
+    font-weight: 500;
+  }
+  .Login-register-Box > h4 > span {
+    color: #65707b;
+  }
+  .SignIn-with {
+    margin: 25px 0px 15px 0px;
+  }
+  .SignIn-with a {
+    text-decoration: none;
+    color: #ea2384;
+  }
+  .SignIn-with span {
+    margin-left: 20px;
+  }
+  .Login-register-Box button {
+    width: 90%;
+    padding: 13px;
+    background-color: transparent;
+    border: none;
+    border: 1px solid;
+    cursor: pointer;
+    color: #ea2384;
+    font-weight: bolder;
+  }
+  .Google-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+  }
+  .Google-button > img {
+    width: 20px;
+  }
+  /* transparent-Container CSS END */
+
   /* .middleAndSmall-screen-header  CSS END *****************************/
 
   /* Media query ******************* */

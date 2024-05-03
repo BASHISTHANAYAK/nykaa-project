@@ -2,10 +2,12 @@ body {
   margin: 0px;
   padding: 0;
   background-color: white;
+  font-family: "Inter", sans-serif;
+  position: relative;
 }
 
 .First-purchase-offer-div {
-  border: 1px solid blue;
+  /* border: 1px solid blue; */
 }
 .First-purchase-offer-div > h2 {
   margin: 0;
@@ -16,7 +18,7 @@ body {
 }
 
 .Brand-in-Focus {
-  border: 1px solid red;
+  /* border: 1px solid red; */
 }
 
 .Brand-in-Focus > h2 {
@@ -25,7 +27,7 @@ body {
 
 /* Explore-Top-Brands */
 .Explore-Top-Brands {
-  border: 1px solid;
+  /* border: 1px solid; */
   width: 100%;
   background-color: #f3f4f6;
   /* height: 400px; */
@@ -47,7 +49,7 @@ p {
 
 /* frizz-free-hair */
 .frizz-free-hair {
-  border: 1px dotted green;
+  /* border: 1px dotted green; */
   width: 90%;
   margin: auto;
 }
@@ -57,7 +59,7 @@ p {
 
 /* Steallar sections */
 .three-Stellar-divs-Container {
-  border: 2px solid red;
+  /* border: 2px solid red; */
   width: 100%;
   margin: auto;
   gap: 13px;
@@ -66,7 +68,7 @@ p {
   justify-content: center;
 }
 .three-Stellar-divs-Container > div {
-  border: 1px solid;
+  /* border: 1px solid; */
   border-radius: 10px;
   display: flex;
   flex-direction: column;
@@ -176,3 +178,4 @@ header {
    
   }
 } */
+

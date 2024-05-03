@@ -1,0 +1,64 @@
+body {
+    margin: 0;
+  }
+  .EntireBox {
+    width: 100vw;
+    height: 100vh;
+    background-color: #f3f3f3;
+    display: flex;
+    justify-content: center;
+  }
+  .LOGIN-REGISTER {
+    width: 320px;
+    height: 85vh;
+    border-radius: 10px 10px 0px 0px;
+    background-color: white;
+    margin-top: 70px;
+    position: relative;
+    padding: 20px 20px 0px 20px;
+  }
+  /* .LOGIN-REGISTER > section {
+      border: 1px solid;
+    } */
+  .cross-loginSection {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 19px;
+  }
+  .x-Sign {
+    position: absolute;
+    top: 18px;
+    left: 20px;
+    cursor: pointer;
+  }
+  .x-Sign a {
+    text-decoration: none;
+    color: black;
+  }
+  .email-phone-input {
+    margin-top: 10px;
+  }
+  .email-phone-input > input:focus {
+    outline: none;
+  }
+  .email-phone-input > input {
+    padding: 14px 0px;
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid red;
+  }
+  .Proceed-BUTTON {
+    margin-top: 150px;
+  }
+  .Proceed-BUTTON > button {
+    padding: 15px 0px;
+    width: 100%;
+    background-color: #fc2779;
+    color: white;
+    border: none;
+    font-weight: bolder;
+    font-size: 18px;
+  }
+  

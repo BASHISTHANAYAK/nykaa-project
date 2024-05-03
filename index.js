@@ -4,7 +4,13 @@ const nav = document.querySelector(".entire-Navbar-Div");
 fetch("./assets/navbar.html")
     .then(res => res.text())
     .then(data => {
-        nav.innerHTML = data;
+        nav.innerHTML += data;
+
+
+        // for js part
+        const parser = new DOMParser()
+        const doc = parser.parseFromString(data, 'text/html')
+        eval(doc.querySelector("script").textContent)
     })
 
 
@@ -54,4 +60,9 @@ fetch("./assets/hotList.html")
         eval(doc.querySelector("script").textContent)
 
     })
+
+// transparent-Container
+
+
+
 
