@@ -10,7 +10,7 @@
 
   <div class="Options-TO-Filter">
     <button class="Option-Buttons">All</button>
-    <button class="Option-Buttons">Markup</button>
+    <button class="Option-Buttons">Makeup</button>
     <button class="Option-Buttons">Skin</button>
     <button class="Option-Buttons">Bath & Body</button>
     <button class="Option-Buttons">Hair</button>
@@ -111,71 +111,109 @@
   ];
 
   let productContainer = document.querySelector(".product-container");
-  // creating div/box to add in the slider
-  produtsArray.forEach((obj) => {
-    // creating entire single product div which has 2 another div
-    let aProductDetails = document.createElement("div");
-    aProductDetails.classList.add("product-card");
+  createProductCard(produtsArray);
 
-    //creating a div that will contain image
-    let productImageDiv = document.createElement("div");
-    productImageDiv.classList.add("product-image");
+  function createProductCard(produtsArray) {
+    productContainer.innerHTML = "";
+    // creating div/box to add in the slider
+    produtsArray.forEach((obj) => {
+      // creating entire single product div which has 2 another div
+      let aProductDetails = document.createElement("div");
+      aProductDetails.classList.add("product-card");
 
-    // span
-    let span = document.createElement("span");
-    span.classList.add("discount-tag");
-    span.innerText = obj.highLight;
-    //img
-    let img = document.createElement("img");
-    img.classList.add("product-thumb");
-    img.src = obj.image;
-    //p tag
-    let ratingPTag = document.createElement("p");
-    ratingPTag.classList.add("card-btn");
-    ratingPTag.innerText = `${obj.rating} /5 ${obj.totalRatings}k`;
+      //creating a div that will contain image
+      let productImageDiv = document.createElement("div");
+      productImageDiv.classList.add("product-image");
 
-    productImageDiv.append(span, img, ratingPTag);
+      // span
+      let span = document.createElement("span");
+      span.classList.add("discount-tag");
+      span.innerText = obj.highLight;
+      //img
+      let img = document.createElement("img");
+      img.classList.add("product-thumb");
+      img.src = obj.image;
+      //p tag
+      let ratingPTag = document.createElement("p");
+      ratingPTag.classList.add("card-btn");
+      ratingPTag.innerText = `${obj.rating} /5 ${obj.totalRatings}k`;
 
-    //another div that will contain other details
-    let productInfoDiv = document.createElement("div");
-    productInfoDiv.classList.add("product-info");
+      productImageDiv.append(span, img, ratingPTag);
 
-    //detail p tag
-    let productName = document.createElement("p");
-    productName.classList.add("product-brand", "product-small-details");
-    productName.innerText = obj.productName;
+      //another div that will contain other details
+      let productInfoDiv = document.createElement("div");
+      productInfoDiv.classList.add("product-info");
 
-    // product quantity
-    let productQuantity = document.createElement("p");
-    productQuantity.classList.add("product-short-description");
-    productQuantity.innerText = `${obj.quantity}ml`;
+      //detail p tag
+      let productName = document.createElement("p");
+      productName.classList.add("product-brand", "product-small-details");
+      productName.innerText = obj.productName;
 
-    // 3 spans for price,off and previous price
-    let priceSpan = document.createElement("span");
-    priceSpan.classList.add("price");
-    priceSpan.innerText = `₹${obj.price}`;
-    //previous price
-    let previousPrice = document.createElement("span");
-    previousPrice.classList.add("actual-price");
-    previousPrice.innerText = `₹${obj.MRP}`;
-    //Discount-Available
-    let Discount = document.createElement("span");
-    Discount.classList.add("Discount-Available");
-    Discount.innerText = obj.discount;
+      // product quantity
+      let productQuantity = document.createElement("p");
+      productQuantity.classList.add("product-short-description");
+      productQuantity.innerText = `${obj.quantity}ml`;
 
-    productInfoDiv.append(
-      productName,
-      productQuantity,
-      priceSpan,
-      previousPrice,
-      Discount
-    );
+      // 3 spans for price,off and previous price
+      let priceSpan = document.createElement("span");
+      priceSpan.classList.add("price");
+      priceSpan.innerText = `₹${obj.price}`;
+      //previous price
+      let previousPrice = document.createElement("span");
+      previousPrice.classList.add("actual-price");
+      previousPrice.innerText = `₹${obj.MRP}`;
+      //Discount-Available
+      let Discount = document.createElement("span");
+      Discount.classList.add("Discount-Available");
+      Discount.innerText = obj.discount;
 
-    // append above both div to its container aProductDetails
-    aProductDetails.append(productImageDiv, productInfoDiv);
-    productContainer.append(aProductDetails);
+      productInfoDiv.append(
+        productName,
+        productQuantity,
+        priceSpan,
+        previousPrice,
+        Discount
+      );
+
+      // append above both div to its container aProductDetails
+      aProductDetails.append(productImageDiv, productInfoDiv);
+      productContainer.append(aProductDetails);
+    });
+  }
+
+  // <div class="Options-TO-Filter">
+  //   <button class="Option-Buttons All">All</button>
+  //   <button class="Option-Buttons Markup">Markup</button>
+  //   <button class="Option-Buttons Skin">Skin</button>
+  //   <button class="Option-Buttons Bath">Bath & Body</button>
+  //   <button class="Option-Buttons Hair">Hair</button>
+  // </div>
+  // filtering part
+
+  let allFilterButtons = document.querySelectorAll(".Option-Buttons");
+  allFilterButtons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      if (btn.innerText == "All") {
+        createProductCard(produtsArray);
+      } else if (btn.innerText == "Makeup") {
+        let res = produtsArray.filter((obj) => obj.productType == "Makeup");
+        createProductCard(res);
+      } else if (btn.innerText == "Skin") {
+        let res = produtsArray.filter((obj) => obj.productType == "Skin");
+        createProductCard(res);
+      } else if (btn.innerText == "Bath & Body") {
+        let res = produtsArray.filter(
+          (obj) => obj.productType == "Bath & Body"
+        );
+        createProductCard(res);
+      } else if (btn.innerText == "Hair") {
+        let res = produtsArray.filter((obj) => obj.productType == "Hair");
+        createProductCard(res);
+      }
+    });
   });
 
+  // prev next button
   const productContainers = [
     ...document.querySelectorAll(".product-container"),
   ];
@@ -358,7 +396,6 @@
 
   .price {
     /* font-size: 20px; */
-    
   }
 
   .actual-price {
