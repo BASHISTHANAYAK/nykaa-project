@@ -145,7 +145,7 @@
     navSignIn.style.display = "none";
 
     let cartbag = document.querySelector(".fa-bag-shopping");
-    cartbag.style.marginLeft = "0px";
+    cartbag.style.marginLeft = "0px"; 
 
     let userName = sessionStorageDATA.Name;
     let userEmail = sessionStorageDATA.email;
@@ -267,18 +267,21 @@
   }
   /* IfUserLogedin-ShowName */
   .IfUserLogedin-ShowName {
-    border: 2px solid red;
+    /* border: 2px solid red; */
     width: 64px;
     height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 3px;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
     cursor: pointer;
     display: none;
+    
+  }
+  .userName{
+    overflow: hidden; 
+    white-space: nowrap; 
+    text-overflow: ellipsis;
   }
   .IfUserLogedin-ShowName:hover {
     transform: scale(0.9);
