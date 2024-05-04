@@ -52,6 +52,19 @@
         <i class="fa-light fa-user"></i>
         <p class="userName"></p>
       </div>
+      <!-- box show when we hover on user  -->
+      <div class="UserHover-On-Profile">
+        <ul>
+          <li><i class="fa-light fa-book-blank"></i> <a href="">Orders</a></li>
+          <li><i class="fa-light fa-user"></i><a href="">Profile</a></li>
+          <li><i class="fa-regular fa-wallet"> </i> <a href="">Wallet</a></li>
+          <li><i class="fa-light fa-heart"></i> <a href="">Wishlist</a></li>
+          <li class="logout">
+            <i class="fa-regular fa-power-off"></i> <a href="">Logout</a>
+          </li>
+        </ul>
+      </div>
+
       <!-- transparent-Container START-->
       <div class="transparent-Container"></div>
       <section class="Login-register-Box" id="Login-register-Box">
@@ -145,7 +158,7 @@
     navSignIn.style.display = "none";
 
     let cartbag = document.querySelector(".fa-bag-shopping");
-    cartbag.style.marginLeft = "0px"; 
+    cartbag.style.marginLeft = "0px";
 
     let userName = sessionStorageDATA.Name;
     let userEmail = sessionStorageDATA.email;
@@ -155,6 +168,13 @@
     userDiv.style.display = "flex";
     userNameTag.innerText = userName;
   }
+
+  // logout
+  let LogOutBtn = document.querySelector(".logout");
+  LogOutBtn.addEventListener("click", function () {
+    sessionStorage.removeItem("userDetails");
+    // location.reload()
+  });
 </script>
 
 <style>
@@ -276,16 +296,69 @@
     gap: 3px;
     cursor: pointer;
     display: none;
-    
   }
-  .userName{
-    overflow: hidden; 
-    white-space: nowrap; 
+  .userName {
+    overflow: hidden;
+    white-space: nowrap;
     text-overflow: ellipsis;
   }
   .IfUserLogedin-ShowName:hover {
     transform: scale(0.9);
-    transition: all 0.15s ease-in-out;
+    transition:  0.15s ease-in-out;
+  }
+
+  /* Box appear when UserHover-On-Profile */
+  .UserHover-On-Profile {
+    /* border: 2px solid red; */
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    height: 200px;
+    width: 220px;
+    background-color: white;
+    position: absolute;
+    top: 100px;
+    right: 30px;
+    z-index: 300;
+   
+    padding: 0px 0px 5px 0px;
+    display: none;
+  }
+
+  .IfUserLogedin-ShowName:hover ~ .UserHover-On-Profile {
+    display: block;
+    
+  }
+  .UserHover-On-Profile:hover {
+    display: block;
+  }
+  .UserHover-On-Profile > ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 5px;
+    /* border: 2px dotted green; */
+    margin: 0;
+    padding: 0;
+    height: 100%;
+  }
+  .UserHover-On-Profile > ul > li {
+    border-top: 1px solid rgb(198, 197, 197);
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 5px;
+    width: 100%;
+    padding: 10px 0px 0px 5px;
+  }
+  .UserHover-On-Profile > ul > li:hover {
+    transition: 0.15s ease-in-out;
+    transform: scale(0.9);
+    color: rgb(206, 206, 245);
+  }
+  .UserHover-On-Profile > ul > li > a {
+    color: black;
+    text-decoration: none;
   }
   .fa-bag-shopping {
     /* margin-left:9%; */

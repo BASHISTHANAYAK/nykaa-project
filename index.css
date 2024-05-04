@@ -110,6 +110,7 @@ header {
   display: none;
 }
 
+
 /* Media query ******************* */
 @media screen and (max-width: 1060px) {
   /* slider first */
@@ -178,4 +179,3 @@ header {
    
   }
 } */
-
