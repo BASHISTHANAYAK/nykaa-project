@@ -48,7 +48,10 @@
         <input type="text" placeholder="Search" />
       </div>
       <button class="nav-signIn">Sign in</button>
-
+      <div class="IfUserLogedin-ShowName">
+        <i class="fa-light fa-user"></i>
+        <p class="userName"></p>
+      </div>
       <!-- transparent-Container START-->
       <div class="transparent-Container"></div>
       <section class="Login-register-Box" id="Login-register-Box">
@@ -118,21 +121,40 @@
 <!-- JS part -->
 
 <script>
-  // onclik on nav-signIn button to open login
+  let sessionStorageDATA = JSON.parse(sessionStorage.getItem("userDetails"));
   let navSignIn = document.querySelector(".nav-signIn"); //signin button
-  let transparentContainer = document.querySelector(".transparent-Container");
-  let LoginBox = document.querySelector(".Login-register-Box");
 
-  navSignIn.addEventListener("click", function () {
-    transparentContainer.style.display = "block";
-    LoginBox.style.display = "block";
-  });
+  if (!sessionStorageDATA) {
+    // onclik on nav-signIn button to open login
+    let transparentContainer = document.querySelector(".transparent-Container");
+    let LoginBox = document.querySelector(".Login-register-Box");
 
-  //transparent-Container
-  transparentContainer.addEventListener("click", function () {
-    transparentContainer.style.display = "none";
-    LoginBox.style.display = "none";
-  });
+    navSignIn.addEventListener("click", function () {
+      transparentContainer.style.display = "block";
+      LoginBox.style.display = "block";
+    });
+
+    //transparent-Container
+    transparentContainer.addEventListener("click", function () {
+      transparentContainer.style.display = "none";
+      LoginBox.style.display = "none";
+    });
+  } else {
+    //if sessionstorage data available
+    //hide signIn button
+    navSignIn.style.display = "none";
+
+    let cartbag = document.querySelector(".fa-bag-shopping");
+    cartbag.style.marginLeft = "0px";
+
+    let userName = sessionStorageDATA.Name;
+    let userEmail = sessionStorageDATA.email;
+    let phoneNumber = sessionStorageDATA.email;
+    let userDiv = document.querySelector(".IfUserLogedin-ShowName");
+    let userNameTag = document.querySelector(".userName");
+    userDiv.style.display = "flex";
+    userNameTag.innerText = userName;
+  }
 </script>
 
 <style>
@@ -157,6 +179,7 @@
   .scroller--And--options--div > section:last-child {
     margin-right: 3%;
     height: 90%;
+    font-weight: 400;
   }
   .options-sections > ul {
     /* border: 1px solid white; */
@@ -179,6 +202,7 @@
   }
   .options-sections > ul > li > a {
     text-decoration: none;
+    color: black;
   }
   .options-sections > ul > li i {
     margin-right: 5px;
@@ -240,6 +264,25 @@
     border-radius: 8px;
     letter-spacing: 0.1px;
     cursor: pointer;
+  }
+  /* IfUserLogedin-ShowName */
+  .IfUserLogedin-ShowName {
+    border: 2px solid red;
+    width: 64px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    cursor: pointer;
+    display: none;
+  }
+  .IfUserLogedin-ShowName:hover {
+    transform: scale(0.9);
+    transition: all 0.15s ease-in-out;
   }
   .fa-bag-shopping {
     /* margin-left:9%; */
@@ -430,8 +473,8 @@
       padding: 2px;
     }
     nav > section:first-child {
-      margin-left: 2%;
-      gap: 13px;
+      margin-left: 1%;
+      gap: 10px;
     }
     nav > section:last-child {
       margin-right: 2%;
