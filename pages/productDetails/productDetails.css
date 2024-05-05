@@ -1,0 +1,101 @@
+body {
+  margin: 0;
+  background-color: #f3f3f3;
+  font-family: "Inter", sans-serif;
+}
+.productDetails-Nav{
+  background-color: white;
+  width: 100%;
+}
+.pay-Day-Sale {
+  width: 100%;
+}
+.pay-Day-Sale img {
+  width: 100%;
+  object-fit: cover;
+}
+.product-Container {
+  /* border: 1px solid blue; */
+  width: 80%;
+  height: 400px;
+  margin: 10px auto auto auto;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.product-Container > section {
+  /* border: 1px solid red; */
+  height: 100%;
+}
+/* diffImages-Section */
+.diffImages-Section {
+  border-right: 1px solid #e7e8ea;
+  width: 38%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.diffImages-Section > img {
+  /* border: 1px solid; */
+  width: 90%;
+  height: 70%;
+  object-fit: contain;
+}
+.details-AddToBag-section {
+  width: 60%;
+}
+.details-AddToBag-section h3,
+h4 {
+  margin: 0;
+  font-weight: 500;
+}
+.details-AddToBag-section h3 {
+  margin-top: 20px;
+}
+.MrpPtag {
+  margin-bottom: 0;
+  color: #5f7388;
+}
+.inclusive-taxes {
+  margin: 0;
+  color: #5f7388;
+}
+.price {
+  color: #001347;
+  font-weight: bolder;
+}
+.details-AddToBag-section button {
+  display: block;
+  margin: auto;
+  margin-top: 120px;
+  width: 50%;
+  padding: 14px;
+  border: none;
+  color: white;
+  background-color: #e80071;
+  font-weight: bolder;
+  cursor: pointer;
+}
+@media screen and (max-width: 897px) {
+  .product-Container {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 605px) {
+  .product-Container {
+    flex-direction: column;
+    height: auto;
+    gap: 40px;
+  }
+  .product-Container > section {
+    width: 100%;
+  }
+  .details-AddToBag-section {
+    text-align: center;
+  }
+  .details-AddToBag-section button {
+    margin-top: 20px;
+  }
+}

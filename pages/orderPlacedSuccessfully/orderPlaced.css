@@ -1,0 +1,13 @@
+body {
+  margin: 0;
+}
+.orderPlaced-IMG {
+  width: 100%;
+  height: 400px;
+  margin-top: 60px;
+}
+.orderPlaced-IMG > img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}

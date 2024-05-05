@@ -35,6 +35,7 @@
       image:
         "https://images-static.nykaa.com/media/catalog/product/b/4/b4342aeBIOT_HRCL_1.jpg",
       productType: "Hair",
+      id: 1,
     },
     {
       productName: "Pilgrim Redensyl & Anagain Advanced Hair Growth Serum ",
@@ -49,6 +50,7 @@
         "https://images-static.nykaa.com/media/catalog/product/b/f/bf5d6efPILGR00000020a_1.jpg?tr=w-344,h-344,cm-pad_resize",
       highLight: "bestSeller",
       productType: "Hair",
+      id: 2,
     },
     {
       productName: "d'you unkissed Serum Sunscreen SPF 50 & PA++++",
@@ -63,6 +65,7 @@
         "https://images-static.nykaa.com/media/catalog/product/2/3/23cf730DYOUX00000013_1.jpg",
       highLight: "bestSeller",
       productType: "skin",
+      id: 3,
     },
     {
       productName:
@@ -78,6 +81,7 @@
         "https://images-static.nykaa.com/media/catalog/product/e/5/e5d4fedNYKAC00000373_1.jpg?tr=w-344,h-344,cm-pad_resize",
       highLight: "OFFER",
       productType: "Makeup",
+      id: 4,
     },
     {
       productName:
@@ -93,6 +97,7 @@
         "https://images-static.nykaa.com/media/catalog/product/8/e/8efee3e607710089631_1.jpg?tr=w-344,h-344,cm-pad_resize",
       highLight: "bestSeller",
       productType: "Skin",
+      id: 5,
     },
     {
       productName:
@@ -107,6 +112,7 @@
         "https://images-static.nykaa.com/media/catalog/product/0/d/0df681b27278_H-8901030954115.jpg?tr=w-344,h-344,cm-pad_resize",
       highLight: "OFFER",
       productType: "Bath & Body",
+      id: 6,
     },
   ];
 
@@ -120,7 +126,6 @@
       // creating entire single product div which has 2 another div
       let aProductDetails = document.createElement("div");
       aProductDetails.classList.add("product-card");
-
       //creating a div that will contain image
       let productImageDiv = document.createElement("div");
       productImageDiv.classList.add("product-image");
@@ -178,16 +183,14 @@
       // append above both div to its container aProductDetails
       aProductDetails.append(productImageDiv, productInfoDiv);
       productContainer.append(aProductDetails);
+      aProductDetails.addEventListener("click", () => {
+        // save obj in sessionstorage
+        sessionStorage.setItem("selectedProduct", JSON.stringify(obj));
+        window.location.href = "/pages/productDetails/productDetails.html";
+      });
     });
   }
 
-  // <div class="Options-TO-Filter">
-  //   <button class="Option-Buttons All">All</button>
-  //   <button class="Option-Buttons Markup">Markup</button>
-  //   <button class="Option-Buttons Skin">Skin</button>
-  //   <button class="Option-Buttons Bath">Bath & Body</button>
-  //   <button class="Option-Buttons Hair">Hair</button>
-  // </div>
   // filtering part
 
   let allFilterButtons = document.querySelectorAll(".Option-Buttons");
@@ -240,6 +243,13 @@
     align-items: center;
     justify-content: space-between;
   }
+  .product-card {
+    cursor: pointer;
+  }
+  .product-card:hover {
+    transform: scale(0.98);
+    border: 1px solid #f0e9e9;
+  }
   .HotList > h1,
   p {
     margin: 2px;
@@ -269,6 +279,7 @@
     color: #5c6873;
     transform: scale(1.2);
     margin-top: 12px;
+    cursor: pointer;
   }
 
   .Option-Buttons:focus {

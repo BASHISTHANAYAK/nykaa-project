@@ -1,0 +1,373 @@
+<link
+  rel="stylesheet"
+  href="https://site-assets.fontawesome.com/releases/v6.5.2/css/all.css"
+/>
+<!-- <div class="cartTransparent-BackGround"></div> -->
+<!-- cart items -->
+<div class="Cart-Products-Div">
+  <section class="BagArrow">
+    <h1><a href="/index.html">&#8592;</a> Bag</h1>
+    <!-- <p>View Wishlist</p> -->
+  </section>
+
+  <section class="BagEmpty-Part">
+    <img src="/images/emptyCartImg.png" alt="" />
+    <button class="StartShopping">Start Shopping</button>
+  </section>
+
+  <section class="BagNon-EmptySection">
+    <div class="products-And-ItsQuantity"></div>
+
+    <div class="Coupons">
+      <div class="appalyCoupn-Part">
+        <p><b>Coupons</b></p>
+        <p class="pinkColor-ApplyNow">Apply now and save extra!</p>
+      </div>
+      <div class="GtArrow">&gt;</div>
+    </div>
+
+    <div class="PriceDetails">
+      <!-- <h2>Price Details</h2>
+      <div>
+        <p>Bag MRP (1 items)</p>
+        <p>₹2150</p>
+      </div>
+      <div>
+        <p>Bag Discount</p>
+        <p>₹322</p>
+      </div>
+      <div>
+        <p>Shipping</p>
+        <p>₹70 Free</p>
+      </div>
+      <div>
+        <h2>You Pay</h2>
+        <h2>₹1828</h2>
+      </div> -->
+    </div>
+
+    <div class="Total-And-Proceed">
+      <div class="total">
+        <h2 class="totalsH2"></h2>
+        <p>Grand Total</p>
+      </div>
+      <button class="orderPlaced">Proceed <span> &#8594;</span></button>
+    </div>
+  </section>
+</div>
+
+<!-- styles -->
+<style>
+  body {
+    margin: 0;
+    font-family: "Inter", sans-serif;
+  }
+
+  .Cart-Products-Div {
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    position: absolute;
+    top: 0;
+    right: 0px;
+    width: 350px;
+    height: 100vh;
+    background-color: white;
+    z-index: 600;
+    padding: 0px 15px;
+  }
+
+  .BagArrow {
+    /* border-bottom: 1px solid; */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 12px;
+    font-size: 14px;
+  }
+  .BagArrow > h1 > a {
+    text-decoration: none;
+    color: black;
+  }
+  .BagArrow > h1 > a:hover {
+    color: #f8469c;
+  }
+  .BagEmpty-Part {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20%;
+    /* display: none; */
+  }
+
+  .BagEmpty-Part > img {
+    /* border: 1px solid green; */
+    width: 300px;
+  }
+  /* BagNon-EmptySection will appear when there is item in the bag */
+  .BagNon-EmptySection {
+    width: 100%;
+    height: 80%;
+    display: grid;
+    grid-template-rows: auto 10% 40% auto;
+    gap: 15px;
+    overflow: auto;
+    display: none;
+  }
+  .BagNon-EmptySection > div {
+    /* display: none; */
+    border: 1px solid #f0f0f2;
+    border-radius: 5px;
+    padding: 4px;
+  }
+  /* img-nameDetails */
+  .img-nameDetails,
+  .qnt-price {
+    /* border: 1px dotted blue; */
+    height: 100px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+  .img-nameDetails img {
+    /* border: 1px dotted red; */
+    width: 80px;
+    object-fit: contain;
+  }
+  .nameDetails {
+    /* border: 1px dotted green; */
+    position: relative;
+  }
+  .nameDetails h6,
+  p {
+    margin: 2px;
+    font-size: 10px;
+  }
+  .nameDetails h6 {
+    font-size: 14px;
+    font-weight: 300;
+    width: 80%;
+  }
+  .delete {
+    position: absolute;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+  }
+  .delete:hover {
+    transform: scale(0.9);
+  }
+  .qnt-price {
+    height: 40px;
+    align-items: center;
+  }
+  .qnt-price select {
+    border: none;
+  }
+  .previous-price {
+    opacity: 0.5;
+    text-decoration: line-through;
+  }
+  /* Coupons */
+  .Coupons {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 20px 0px 20px 0px;
+  }
+
+  .pinkColor-ApplyNow {
+    color: #e8298e;
+  }
+  .GtArrow {
+    font-weight: bolder;
+    font-size: 23px;
+  }
+  .StartShopping {
+    width: 60%;
+    padding: 15px 20px;
+    border: none;
+    background-color: #e80071;
+    color: white;
+    font-weight: bold;
+    border-radius: 10px;
+    margin-top: 10px;
+    cursor: pointer;
+    background-color: #f8469c;
+  }
+  .PriceDetails > h2 {
+    /* border: 1px solid blue; */
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin: 0;
+    font-weight: 500;
+    font-size: 19px;
+    padding: 5px;
+  }
+  .PriceDetails > div {
+    /* border: 1px solid green; */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px;
+  }
+  .PriceDetails > div > h2 {
+    margin: 0;
+    font-weight: 500;
+    font-size: 17px;
+  }
+  .Cart-Products-Div .Total-And-Proceed {
+    /* border: 1px solid; */
+    width: 320px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 50px;
+    /* margin-left: 1%; */
+    border: none;
+  }
+  .total,
+  .Total-And-Proceed button {
+    position: absolute;
+  }
+  .Total-And-Proceed button {
+    right: 0;
+  }
+  .total {
+    left: 0;
+  }
+
+  .total h2,
+  p {
+    margin: 0;
+    font-weight: 400;
+  }
+
+  .Total-And-Proceed button {
+    width: 55%;
+    border: none;
+    color: white;
+    font-weight: bold;
+    background-color: #e80071;
+    padding: 10px 20px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+  }
+  .Total-And-Proceed button > span {
+    font-size: 20px;
+    margin: 0;
+    padding: 0;
+  }
+  .Total-And-Proceed button:hover {
+    transform: scale(0.95);
+    transition: 0.15s ease-in-out;
+  }
+  .StartShopping:hover {
+    transform: scale(0.99);
+  }
+
+  @media screen and (max-width: 380px) {
+    .Cart-Products-Div {
+      width: 100%;
+      height: 100vh;
+      padding: 0;
+    }
+  }
+</style>
+
+<script>
+  // if product aded in the cart show it in the cart
+  let productsInTheUserCart = JSON.parse(
+    sessionStorage.getItem("CartProducts")
+  );
+
+  // console.log("productsInTheUserCart", productsInTheUserCart);
+
+  let BagEmptyPart = document.querySelector(".BagEmpty-Part");
+  let BagNonEmptySection = document.querySelector(".BagNon-EmptySection");
+
+  if (productsInTheUserCart) {
+    BagEmptyPart.style.display = "none";
+    BagNonEmptySection.style.display = "block";
+
+    productsInTheUserCart.forEach((obj) => {
+      let aProductDiv = document.createElement("div");
+      aProductDiv.classList.add("products-And-ItsQuantity");
+      aProductDiv.innerHTML = `
+      <div class="img-nameDetails">
+        <p>
+          <img
+            src=${obj.image}
+            alt=""
+          />
+        </p>
+        <div class="nameDetails">
+          <h6>
+            ${obj.productName}
+            <span class="delete"><i class="fa-light fa-trash-can"></i></span>
+          </h6>
+          <p> ${obj.quantity}ml | ${obj.quantity}ml</p>
+        </div>
+      </div>
+      <hr />
+      <div class="qnt-price">
+        <p>
+          Quantity :
+          <select name="" id="">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+          </select>
+        </p>
+        <p><span class="previous-price">₹${obj.MRP} </span> <b>₹${obj.price}</b></p>
+      </div>
+      `;
+
+      const firstChild = BagNonEmptySection.firstChild;
+      BagNonEmptySection.insertBefore(aProductDiv, firstChild);
+    });
+
+    //PriceDetails
+    let PriceDetails = document.querySelector(".PriceDetails");
+    let totalItem = productsInTheUserCart.length;
+    let totalPrice = productsInTheUserCart.reduce(
+      (acc, nx) => Number(acc) + Number(nx.price),
+      0
+    );
+    // totalsH2 -> you have to pay Grand Total
+    let totalsH2 = document.querySelector(".totalsH2");
+    totalsH2.innerText = `₹${totalPrice - 322}`;
+    PriceDetails.innerHTML = `
+  <h2>Price Details</h2>
+      <div>
+        <p>Bag MRP (${totalItem} items)</p>
+        <p>₹${totalPrice}</p>
+      </div>
+      <div>
+        <p>Bag Discount</p>
+        <p>₹322</p>
+      </div>
+      <div>
+        <p>Shipping</p>
+        <p>₹70 Free</p>
+      </div>
+      <div>
+        <h2>You Pay</h2>
+        <h2>₹${totalPrice - 322}</h2>
+      </div>`;
+
+    document
+      .querySelector(".orderPlaced")
+      .addEventListener("click", orderPlaced);
+    function orderPlaced() {
+      window.location.href = "/pages/orderPlacedSuccessfully/orderPlaced.html";
+      sessionStorage.removeItem("CartProducts");
+    }
+  }
+</script>
