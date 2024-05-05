@@ -56,6 +56,7 @@ AddToBag.addEventListener("click", addToCart)
 function addToCart() {
     if (!getUserInfo) {
         window.location.href = "/pages/LoginOrSignUp/LoginOrSignUp.html"
+        return
     }
 
     if (CartProducts.length == 0) {
@@ -80,8 +81,5 @@ function addToCart() {
             return
         }
     }
-
-
-
 
 }
