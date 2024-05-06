@@ -29,15 +29,18 @@ function clickProceed() {
         PROCEED.style.backgroundColor = "#f3f3f3"
         document.querySelector(".otp-secction").style.display = "block"
         let otp = Math.floor(1000 + Math.random() * 9000);
-        alert(`Enter the otp  ${otp}`)
+        alert(`Copy the otp:  ${otp}`)
 
         //changing color of button according to input
         let VERIFY = document.querySelector(".VERIFY")
         VERIFY.addEventListener("input", function () {
             console.log("VERIFY", VERIFY.value);
-            if (VERIFY.value.length == 4) {
+            if (VERIFY.value.length >= 4) {
                 PROCEED.style.backgroundColor = "#fc2779"
                 PROCEED.style.pointerEvents = "auto"
+            } else {
+                PROCEED.style.pointerEvents = "none"
+                PROCEED.style.backgroundColor = "#f3f3f3"
             }
         })
 

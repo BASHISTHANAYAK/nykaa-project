@@ -3,7 +3,7 @@ body {
   background-color: #f3f3f3;
   font-family: "Inter", sans-serif;
 }
-.productDetails-Nav{
+.productDetails-Nav {
   background-color: white;
   width: 100%;
 }
@@ -53,6 +53,13 @@ h4 {
 }
 .details-AddToBag-section h3 {
   margin-top: 20px;
+}
+#firstRating-div-P {
+  margin-top: 20px;
+}
+.details-AddToBag-section > p {
+  margin-top: 8px;
+  font-size: 14px;
 }
 .MrpPtag {
   margin-bottom: 0;

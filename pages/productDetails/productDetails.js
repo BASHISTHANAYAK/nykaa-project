@@ -47,14 +47,20 @@ let CartProducts = JSON.parse(sessionStorage.getItem("CartProducts")) || []
 let AddToBag = document.querySelector(".AddToBag");
 
 let getUserInfo = JSON.parse(sessionStorage.getItem("userDetails"));
-if (!getUserInfo) {
-    AddToBag.innerText = "SignUp/SignIn"
+if (!getUserInfo ||
+    !getUserInfo.Name ||
+    !getUserInfo.email ||
+    !getUserInfo.phoneNumber) {
+    AddToBag.innerText = "SignUp / SignIn"
 }
 
 // click cart button
 AddToBag.addEventListener("click", addToCart)
 function addToCart() {
-    if (!getUserInfo) {
+    if (!getUserInfo ||
+        !getUserInfo.Name ||
+        !getUserInfo.email ||
+        !getUserInfo.phoneNumber) {
         window.location.href = "/pages/LoginOrSignUp/LoginOrSignUp.html"
         return
     }
