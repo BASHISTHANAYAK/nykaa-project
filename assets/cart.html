@@ -11,12 +11,12 @@
   </section>
 
   <section class="BagEmpty-Part">
-    <img src="/images/emptyCartImg.png" alt="" />
+    <div><img src="/images/emptyCartImg.png" alt="" /></div>
     <button class="StartShopping">Start Shopping</button>
   </section>
 
   <section class="BagNon-EmptySection">
-    <div class="products-And-ItsQuantity"></div>
+    <div class="products-And-ItsQuantity-BOX"></div>
 
     <div class="Coupons">
       <div class="appalyCoupn-Part">
@@ -26,25 +26,7 @@
       <div class="GtArrow">&gt;</div>
     </div>
 
-    <div class="PriceDetails">
-      <!-- <h2>Price Details</h2>
-      <div>
-        <p>Bag MRP (1 items)</p>
-        <p>₹2150</p>
-      </div>
-      <div>
-        <p>Bag Discount</p>
-        <p>₹322</p>
-      </div>
-      <div>
-        <p>Shipping</p>
-        <p>₹70 Free</p>
-      </div>
-      <div>
-        <h2>You Pay</h2>
-        <h2>₹1828</h2>
-      </div> -->
-    </div>
+    <div class="PriceDetails"></div>
 
     <div class="Total-And-Proceed">
       <div class="total">
@@ -91,16 +73,26 @@
     color: #f8469c;
   }
   .BagEmpty-Part {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    /* border: 1px solid red; */
     margin-top: 20%;
     /* display: none; */
+    margin: auto;
   }
 
-  .BagEmpty-Part > img {
+  .BagEmpty-Part > div {
     /* border: 1px solid green; */
     width: 300px;
+    margin: auto;
+  }
+  .BagEmpty-Part > div > img {
+    width: 100%;
+    object-fit: contain;
+  }
+
+  .BagEmpty-Part button {
+    display: block;
+    margin: auto;
+    margin-top: 20px;
   }
   /* BagNon-EmptySection will appear when there is item in the bag */
   .BagNon-EmptySection {
@@ -117,6 +109,16 @@
     border: 1px solid #f0f0f2;
     border-radius: 5px;
     padding: 4px;
+  }
+  .BagNon-EmptySection .products-And-ItsQuantity-BOX {
+    border: none;
+  }
+  .products-And-ItsQuantity-BOX > div {
+    /* border: 1px solid red; */
+    border: 1px solid #f0f0f2;
+    margin-top: 7px;
+    padding: 5px;
+    border-radius: 5px;
   }
   /* img-nameDetails */
   .img-nameDetails,
@@ -149,7 +151,7 @@
   .delete {
     position: absolute;
     top: 0;
-    right: 0;
+    right: 1px;
     cursor: pointer;
   }
   .delete:hover {
@@ -280,23 +282,39 @@
 
 <script>
   // if product aded in the cart show it in the cart
-  let productsInTheUserCart = JSON.parse(
-    sessionStorage.getItem("CartProducts")
-  );
+  let LoggedInUserDetails = JSON.parse(sessionStorage.getItem("userDetails"));
+  let productsInTheUserCart = LoggedInUserDetails.CartProducts;
 
   // console.log("productsInTheUserCart", productsInTheUserCart);
-
   let BagEmptyPart = document.querySelector(".BagEmpty-Part");
   let BagNonEmptySection = document.querySelector(".BagNon-EmptySection");
+  let StartShoppingButton = document.querySelector(".StartShopping");
+  StartShoppingButton.addEventListener("click", function () {
+    window.location.href = "/index.html";
+  });
 
-  if (productsInTheUserCart) {
+  let productsAndItsQuantityBOX = document.querySelector(
+    ".products-And-ItsQuantity-BOX"
+  );
+
+  if (productsInTheUserCart && productsInTheUserCart.length > 0) {
     BagEmptyPart.style.display = "none";
     BagNonEmptySection.style.display = "block";
 
-    productsInTheUserCart.forEach((obj) => {
-      let aProductDiv = document.createElement("div");
-      aProductDiv.classList.add("products-And-ItsQuantity");
-      aProductDiv.innerHTML = `
+    // display number of product as per the productsInTheUserCartarray
+    createProductBOX(productsInTheUserCart);
+    function createProductBOX(productsInTheUserCart) {
+      if (productsInTheUserCart.length === 0) {
+        BagEmptyPart.style.display = "block";
+        BagNonEmptySection.style.display = "none";
+
+        return;
+      }
+      productsAndItsQuantityBOX.innerHTML = "";
+      productsInTheUserCart.forEach((obj, i) => {
+        let aProductDiv = document.createElement("div");
+        aProductDiv.classList.add("products-And-ItsQuantity");
+        aProductDiv.innerHTML = `
       <div class="img-nameDetails">
         <p>
           <img
@@ -307,7 +325,7 @@
         <div class="nameDetails">
           <h6>
             ${obj.productName}
-            <span class="delete"><i class="fa-light fa-trash-can"></i></span>
+            <span ><i class="fa-light fa-trash-can delete"  data-deleteindex=${i}></i></span>
           </h6>
           <p> ${obj.quantity}ml | ${obj.quantity}ml</p>
         </div>
@@ -316,58 +334,149 @@
       <div class="qnt-price">
         <p>
           Quantity :
-          <select name="" id="">
-            <option value="1">1</option>
-            <option value="2">2</option>
+          <select  data-index=${i} name="${obj.productName}" data-prc="${
+          obj.price
+        }" class="quantitySelect">
+            <option value="1" >1</option>
+            <option value="2" >2</option>
             <option value="3">3</option>
             <option value="4">4</option>
             <option value="5">5</option>
             <option value="6">6</option>
           </select>
         </p>
-        <p><span class="previous-price">₹${obj.MRP} </span> <b>₹${obj.price}</b></p>
+        <p ><span class="previous-price">₹${
+          obj.MRP * obj.numberOfProduct
+        } </span> <b class="current-Price">₹${
+          obj.price * obj.numberOfProduct
+        }</b></p>
       </div>
       `;
 
-      const firstChild = BagNonEmptySection.firstChild;
-      BagNonEmptySection.insertBefore(aProductDiv, firstChild);
+        // const firstChild = BagNonEmptySection.firstChild;
+        // BagNonEmptySection.insertBefore(aProductDiv, firstChild);
+        // BagNonEmptySection.append(aProductDiv);
+        productsAndItsQuantityBOX.append(aProductDiv);
+      });
+    }
+
+    //add  productDetails div in the PriceDetails container
+    let PriceDetails = document.querySelector(".PriceDetails");
+
+    PriceDetailsPART(productsInTheUserCart);
+    function PriceDetailsPART(productsInTheUserCart) {
+      PriceDetails.innerHTML = "";
+      let totalItem = productsInTheUserCart.length;
+      let totalPrice = productsInTheUserCart.reduce(
+        (acc, nx) => acc + nx.price * nx.numberOfProduct,
+        0
+      );
+      // totalsH2 -> you have to pay Grand Total
+      let totalsH2 = document.querySelector(".totalsH2");
+      totalsH2.innerText = `₹${totalPrice}`;
+
+      PriceDetails.innerHTML = `
+                                  <h2>Price Details</h2>
+                                      <div>
+                                        <p>Bag MRP (${totalItem} items)</p>
+                                        <p>₹${totalPrice}</p>
+                                      </div>
+                                      <div>
+                                        <p>Bag Discount</p>
+                                        <p>₹322</p>
+                                      </div>
+                                      <div>
+                                        <p>Shipping</p>
+                                        <p>₹70 Free</p>
+                                      </div>
+                                      <div>
+                                        <h2>You Pay</h2>
+                                        <h2>₹${totalPrice}</h2>
+                                      </div>`;
+    }
+
+    // quantitySelect
+    let quantitySelect = document.querySelectorAll(".quantitySelect");
+
+    quantitySelect.forEach((eachSelectTag, i) => {
+      // give select tags  default value from the dom
+      quantitySelect[i].value = productsInTheUserCart[i].numberOfProduct;
+
+      //select tag quantity functionality
+      eachSelectTag.addEventListener("change", changeFnOnSelect);
+      function changeFnOnSelect(event) {
+        let selectedValue = event.target.value;
+        let SelectTAGIndex = event.target.dataset.index;
+        let previousPrice = document.querySelectorAll(".previous-price");
+        let currentPrice = document.querySelectorAll(".current-Price");
+
+        // finding the Product object by its id and adding the selected quantity
+        productsInTheUserCart[SelectTAGIndex].numberOfProduct =
+          Number(selectedValue);
+
+        sessionStorage.setItem(
+          "userDetails",
+          JSON.stringify(LoggedInUserDetails)
+        );
+        LoggedInUserDetails = JSON.parse(sessionStorage.getItem("userDetails"));
+        productsInTheUserCart = LoggedInUserDetails.CartProducts;
+        // changing the productdetail's price as we select quantity
+        currentPrice[i].innerText = "";
+        currentPrice[i].innerText =
+          productsInTheUserCart[i].numberOfProduct *
+          productsInTheUserCart[i].price;
+        // changing the productdetail's MRP as we select quantity
+        previousPrice[i].innerText = "";
+        previousPrice[i].innerText =
+          productsInTheUserCart[i].numberOfProduct *
+          productsInTheUserCart[i].MRP;
+        PriceDetailsPART(productsInTheUserCart);
+      }
     });
 
-    //PriceDetails
-    let PriceDetails = document.querySelector(".PriceDetails");
-    let totalItem = productsInTheUserCart.length;
-    let totalPrice = productsInTheUserCart.reduce(
-      (acc, nx) => Number(acc) + Number(nx.price),
-      0
-    );
-    // totalsH2 -> you have to pay Grand Total
-    let totalsH2 = document.querySelector(".totalsH2");
-    totalsH2.innerText = `₹${totalPrice - 322}`;
-    PriceDetails.innerHTML = `
-  <h2>Price Details</h2>
-      <div>
-        <p>Bag MRP (${totalItem} items)</p>
-        <p>₹${totalPrice}</p>
-      </div>
-      <div>
-        <p>Bag Discount</p>
-        <p>₹322</p>
-      </div>
-      <div>
-        <p>Shipping</p>
-        <p>₹70 Free</p>
-      </div>
-      <div>
-        <h2>You Pay</h2>
-        <h2>₹${totalPrice - 322}</h2>
-      </div>`;
+    // delete functionality
+    document
+      .querySelector(".products-And-ItsQuantity-BOX")
+      .addEventListener("click", function (e) {
+        if (e.target && e.target.classList.contains("delete")) {
+          let clickedIndex = e.target.dataset.deleteindex;
+          console.log("clickedIndex-", clickedIndex);
+
+          LoggedInUserDetails = JSON.parse(
+            sessionStorage.getItem("userDetails")
+          );
+          productsInTheUserCart = LoggedInUserDetails.CartProducts;
+
+          let newArray = productsInTheUserCart.filter(
+            (obj, index) => index !== +clickedIndex
+          );
+
+          console.log("newArray-", newArray);
+          LoggedInUserDetails.CartProducts = newArray;
+          sessionStorage.setItem(
+            "userDetails",
+            JSON.stringify(LoggedInUserDetails)
+          );
+          LoggedInUserDetails = JSON.parse(
+            sessionStorage.getItem("userDetails")
+          );
+          productsInTheUserCart = LoggedInUserDetails.CartProducts;
+          createProductBOX(productsInTheUserCart);
+          PriceDetailsPART(productsInTheUserCart);
+        }
+      });
 
     document
       .querySelector(".orderPlaced")
       .addEventListener("click", orderPlaced);
     function orderPlaced() {
       window.location.href = "/pages/orderPlacedSuccessfully/orderPlaced.html";
-      sessionStorage.removeItem("CartProducts");
+      LoggedInUserDetails = JSON.parse(sessionStorage.getItem("userDetails"));
+      LoggedInUserDetails.CartProducts = [];
+      sessionStorage.setItem(
+        "userDetails",
+        JSON.stringify(LoggedInUserDetails)
+      );
     }
   }
 </script>

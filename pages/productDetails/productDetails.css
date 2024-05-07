@@ -65,6 +65,9 @@ h4 {
   margin-bottom: 0;
   color: #5f7388;
 }
+.previousMRP{
+  text-decoration-line: line-through;
+}
 .inclusive-taxes {
   margin: 0;
   color: #5f7388;

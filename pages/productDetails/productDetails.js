@@ -24,68 +24,87 @@ fetch("/assets/footer.html")
 // getting saved product details fron sessionstorage
 
 let selectedProduct = JSON.parse(sessionStorage.getItem('selectedProduct'));
-// image
-let productImage = document.querySelector(".productImage")
-productImage.src = selectedProduct.image
-// product-Heading
-let productHeading = document.querySelector(".product-Heading")
-productHeading.innerText = selectedProduct.productName
-// productQuantity
-let productQuantity = document.querySelector(".productQuantity")
-productQuantity.innerText = `(${selectedProduct.quantity})ml`
-// ratingDetails
-let ratingDetails = document.querySelector(".ratingDetails")
-ratingDetails.innerHTML += `${selectedProduct.rating}/5 | ${selectedProduct.totalRatings}k ratings & ${selectedProduct.totalReviews} reviews`
 
-//price
-let price = document.querySelector(".price")
-price.innerText += `₹ ${selectedProduct.price} `
+if (selectedProduct) {
 
-// AddToBag
+    // image
+    let productImage = document.querySelector(".productImage")
+    productImage.src = selectedProduct.image
+    // product-Heading
+    let productHeading = document.querySelector(".product-Heading")
+    productHeading.innerText = selectedProduct.productName
+    // productQuantity
+    let productQuantity = document.querySelector(".productQuantity")
+    productQuantity.innerText = `(${selectedProduct.quantity})ml`
+    // ratingDetails
+    let ratingDetails = document.querySelector(".ratingDetails")
+    ratingDetails.innerHTML += `${selectedProduct.rating}/5 | ${selectedProduct.totalRatings}k ratings & ${selectedProduct.totalReviews} reviews`
 
-let CartProducts = JSON.parse(sessionStorage.getItem("CartProducts")) || []
-let AddToBag = document.querySelector(".AddToBag");
 
-let getUserInfo = JSON.parse(sessionStorage.getItem("userDetails"));
-if (!getUserInfo ||
-    !getUserInfo.Name ||
-    !getUserInfo.email ||
-    !getUserInfo.phoneNumber) {
-    AddToBag.innerText = "SignUp / SignIn"
-}
+    //MrpPtag
+    let previousMRP = document.querySelector(".previousMRP")
+    previousMRP.innerText += ` ₹${selectedProduct.MRP} `
 
-// click cart button
-AddToBag.addEventListener("click", addToCart)
-function addToCart() {
+    //price
+    let price = document.querySelector(".price")
+    price.innerText += ` ₹${selectedProduct.price} `
+
+    // AddToBag
+    let AddToBag = document.querySelector(".AddToBag");
+    let getUserInfo = JSON.parse(sessionStorage.getItem("userDetails"));
+    let CartProducts = getUserInfo.CartProducts
+    if (!CartProducts) {
+        CartProducts = getUserInfo.CartProducts = []
+    }
+
     if (!getUserInfo ||
         !getUserInfo.Name ||
         !getUserInfo.email ||
         !getUserInfo.phoneNumber) {
-        window.location.href = "/pages/LoginOrSignUp/LoginOrSignUp.html"
-        return
+        AddToBag.innerText = "SignUp / SignIn"
     }
 
-    if (CartProducts.length == 0) {
-        // saving the obj to sessionstorage
-        CartProducts.push(selectedProduct)
-        sessionStorage.setItem("CartProducts", JSON.stringify(CartProducts))
-        alert("Product added to Bag!")
-    } else {
-        let isAlreadyInTheCart = CartProducts.filter((obj) => {
-            return obj.id == selectedProduct.id
-        })
-
-        console.log("selectedProduct-", selectedProduct);
-        console.log("isAlreadyInTheCart-", isAlreadyInTheCart);
-
-        if (isAlreadyInTheCart == 0) {
-            CartProducts.push(selectedProduct)
-            sessionStorage.setItem("CartProducts", JSON.stringify(CartProducts))
-            alert("Product added to Bag!")
-        } else {
-            alert("Product already in the cart")
+    // click cart button
+    AddToBag.addEventListener("click", addToCart)
+    function addToCart() {
+        getUserInfo = JSON.parse(sessionStorage.getItem("userDetails"));
+        CartProducts = getUserInfo.CartProducts
+        if (!getUserInfo ||
+            !getUserInfo.Name ||
+            !getUserInfo.email ||
+            !getUserInfo.phoneNumber) {
+            window.location.href = "/pages/LoginOrSignUp/LoginOrSignUp.html"
             return
         }
+
+        // if userCart is empty
+        if (CartProducts.length == 0) {
+            // saving the obj to sessionstorage
+            selectedProduct.numberOfProduct = 1
+            CartProducts.push(selectedProduct)
+            sessionStorage.setItem("userDetails", JSON.stringify(getUserInfo))
+            alert("Product added to Bag!")
+        } else {
+            let isAlreadyInTheCart = CartProducts.filter((obj) => {
+                return obj.id == selectedProduct.id
+            })
+
+            // console.log("selectedProduct-", selectedProduct);
+            // console.log("isAlreadyInTheCart-", isAlreadyInTheCart);
+
+            if (isAlreadyInTheCart == 0) {
+                selectedProduct.numberOfProduct = 1
+                CartProducts.push(selectedProduct)
+                sessionStorage.setItem("userDetails", JSON.stringify(getUserInfo))
+                alert("Product added to Bag!")
+            } else {
+                alert("Product already in the cart")
+                return
+            }
+        }
+
     }
 
+} else {
+    window.location.href = "/index.html"
 }
