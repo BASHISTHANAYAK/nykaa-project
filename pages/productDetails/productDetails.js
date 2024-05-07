@@ -21,12 +21,10 @@ fetch("/assets/footer.html")
     })
 
 
-// getting saved product details fron sessionstorage
-
+// Getting saved product details from sessionStorage
 let selectedProduct = JSON.parse(sessionStorage.getItem('selectedProduct'));
 
 if (selectedProduct) {
-
     // image
     let productImage = document.querySelector(".productImage")
     productImage.src = selectedProduct.image
@@ -40,7 +38,6 @@ if (selectedProduct) {
     let ratingDetails = document.querySelector(".ratingDetails")
     ratingDetails.innerHTML += `${selectedProduct.rating}/5 | ${selectedProduct.totalRatings}k ratings & ${selectedProduct.totalReviews} reviews`
 
-
     //MrpPtag
     let previousMRP = document.querySelector(".previousMRP")
     previousMRP.innerText += ` ₹${selectedProduct.MRP} `
@@ -52,59 +49,42 @@ if (selectedProduct) {
     // AddToBag
     let AddToBag = document.querySelector(".AddToBag");
     let getUserInfo = JSON.parse(sessionStorage.getItem("userDetails"));
-    let CartProducts = getUserInfo.CartProducts
-    if (!CartProducts) {
-        CartProducts = getUserInfo.CartProducts = []
+    if (!getUserInfo) {
+        // If user details are not found, create a new object
+        getUserInfo = {
+            Name: "Bashistha NAYAK",
+            email: "bashistha0007@gmail.com",
+            phoneNumber: "0843112241"
+        };
+        sessionStorage.setItem("userDetails", JSON.stringify(getUserInfo));
     }
 
-    if (!getUserInfo ||
-        !getUserInfo.Name ||
-        !getUserInfo.email ||
-        !getUserInfo.phoneNumber) {
-        AddToBag.innerText = "SignUp / SignIn"
+    // Initialize CartProducts as an empty array if it doesn't exist
+    if (!getUserInfo.CartProducts) {
+        getUserInfo.CartProducts = [];
     }
 
     // click cart button
-    AddToBag.addEventListener("click", addToCart)
+    AddToBag.addEventListener("click", addToCart);
     function addToCart() {
-        getUserInfo = JSON.parse(sessionStorage.getItem("userDetails"));
-        CartProducts = getUserInfo.CartProducts
-        if (!getUserInfo ||
-            !getUserInfo.Name ||
-            !getUserInfo.email ||
-            !getUserInfo.phoneNumber) {
-            window.location.href = "/pages/LoginOrSignUp/LoginOrSignUp.html"
-            return
+        if (!getUserInfo.Name || !getUserInfo.email || !getUserInfo.phoneNumber) {
+            window.location.href = "/pages/LoginOrSignUp/LoginOrSignUp.html";
+            return;
         }
 
-        // if userCart is empty
-        if (CartProducts.length == 0) {
-            // saving the obj to sessionstorage
-            selectedProduct.numberOfProduct = 1
-            CartProducts.push(selectedProduct)
-            sessionStorage.setItem("userDetails", JSON.stringify(getUserInfo))
-            alert("Product added to Bag!")
-        } else {
-            let isAlreadyInTheCart = CartProducts.filter((obj) => {
-                return obj.id == selectedProduct.id
-            })
-
-            // console.log("selectedProduct-", selectedProduct);
-            // console.log("isAlreadyInTheCart-", isAlreadyInTheCart);
-
-            if (isAlreadyInTheCart == 0) {
-                selectedProduct.numberOfProduct = 1
-                CartProducts.push(selectedProduct)
-                sessionStorage.setItem("userDetails", JSON.stringify(getUserInfo))
-                alert("Product added to Bag!")
-            } else {
-                alert("Product already in the cart")
-                return
-            }
+        // Check if the selected product is already in CartProducts
+        let isAlreadyInCart = getUserInfo.CartProducts.some(product => product.id === selectedProduct.id);
+        if (isAlreadyInCart) {
+            alert("Product already in the cart");
+            return;
         }
 
+        // Save the object to session storage
+        selectedProduct.numberOfProduct = 1;
+        getUserInfo.CartProducts.push(selectedProduct);
+        sessionStorage.setItem("userDetails", JSON.stringify(getUserInfo));
+        alert("Product added to Bag!");
     }
-
 } else {
-    window.location.href = "/index.html"
+    window.location.href = "/index.html";
 }

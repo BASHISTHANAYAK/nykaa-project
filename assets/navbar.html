@@ -47,9 +47,7 @@
         <i class="fa-regular fa-magnifying-glass"></i>
         <input type="text" placeholder="Search" />
       </div>
-      <button class="nav-signIn">
-        <a href="/pages/LoginOrSignUp/LoginOrSignUp.html">Sign in</a>
-      </button>
+      <button class="nav-signIn">Sign in</button>
       <div class="IfUserLogedin-ShowName">
         <i class="fa-light fa-user"></i>
         <p class="userName"></p>
@@ -184,10 +182,6 @@
   // logout
   let LogOutBtn = document.querySelector(".logout");
   LogOutBtn.addEventListener("click", function () {
-    sessionStorage.removeItem("userDetails");
-    //remove CartProducts
-    sessionStorage.removeItem("CartProducts");
-    // location.reload()
   });
 
   //openCart
@@ -532,9 +526,8 @@
     background-color: white;
     /* width: 330px; */
     position: absolute;
-    right: 50px;
+    right:30px;
     top: 120px;
-
     /* padding: 30px 20px; */
     font-family: "Inter", sans-serif;
     font-size: 14px;
@@ -547,9 +540,11 @@
     height: 30px;
     background-color: white;
     position: absolute;
-    top: -14px;
-    right: 18%;
+    top: -15px;
+    right: 16%;
     transform: rotate(45deg);
+    border-top: 1px solid rgba(99, 99, 99, 0.2);
+    border-left: 1px solid rgba(99, 99, 99, 0.2);
   }
   .Login-register-Box * {
     margin: 0;
