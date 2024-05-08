@@ -73,10 +73,8 @@
           Register now and get
           <span>1000 Nykaa reward points instantly!</span>
         </h4>
-        <button class="SignIn-with">
-          <a href="../pages/LoginOrSignUp/LoginOrSignUp.html"
-            >Sign in with Mobile / Email <span>&#8594;</span></a
-          >
+        <button class="SignIn-with-Button">
+          Sign in with Mobile / Email <span>&#8594;</span>
         </button>
         <button class="Google-button">
           <img
@@ -139,11 +137,14 @@
 <!-- JS part -->
 
 <script>
+  //getting logged in user data
   let sessionStorageDATA = JSON.parse(sessionStorage.getItem("userDetails"));
+  console.log("nav sessionStorageDATA-", sessionStorageDATA);
+
   let navSignIn = document.querySelector(".nav-signIn"); //signin button
 
   if (!sessionStorageDATA) {
-    // onclik on nav-signIn button to open login
+    // onclik on nav-signIn button to open login if user details not found from sessionStorage
     let transparentContainer = document.querySelector(".transparent-Container");
     let LoginBox = document.querySelector(".Login-register-Box");
 
@@ -152,7 +153,14 @@
       LoginBox.style.display = "block";
     });
 
-    //transparent-Container
+    // goto logIn/ register page when we click the SignIn-with-Button
+    let SignInWithButton = document.querySelector(".SignIn-with-Button");
+    SignInWithButton.addEventListener(
+      "click",
+      () => (window.location.href = "/pages/LoginOrSignUp/LoginOrSignUp.html")
+    );
+
+    //when we click transparent-Container it close the signIn/register box
     transparentContainer.addEventListener("click", function () {
       transparentContainer.style.display = "none";
       LoginBox.style.display = "none";
@@ -163,7 +171,7 @@
     sessionStorageDATA.email &&
     sessionStorageDATA.phoneNumber
   ) {
-    //if sessionstorage data available
+    //if sessionstorage data of user available
     //hide signIn button
     navSignIn.style.display = "none";
 
@@ -177,30 +185,36 @@
     let userNameTag = document.querySelector(".userName");
     userDiv.style.display = "flex";
     userNameTag.innerText = userName;
+  } else {
+    // if half signin/register clear data from sessionstorage
+    sessionStorage.removeItem("userDetails");
   }
 
-  // logout
+  // logout button
   let LogOutBtn = document.querySelector(".logout");
-  LogOutBtn.addEventListener("click", function () {
-  });
+  LogOutBtn.addEventListener("click", function () {});
 
   //openCart
   const openCart = document.querySelector(".openCart");
-  fetch("/assets/cart.html")
-    .then((res) => res.text())
-    .then((data) => {
-      openCart.innerHTML += data;
+  openCartFN();
+  function openCartFN() {
+    fetch("/assets/cart.html")
+      .then((res) => res.text())
+      .then((data) => {
+        openCart.innerHTML += data;
 
-      // for js part
-      const parser = new DOMParser();
-      const doc = parser.parseFromString(data, "text/html");
-      eval(doc.querySelector("script").textContent);
-    });
+        // for js part
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(data, "text/html");
+        eval(doc.querySelector("script").textContent);
+      });
+  }
 
-  //fa-bag-shopping  when we click the cart button  show the cart page
-  let cartIcon = document.querySelector(".fa-bag-shopping ");
+  //fa-bag-shopping  when we click the cart button to show the cart page
+  let cartIcon = document.querySelector(".fa-bag-shopping");
   cartIcon.addEventListener("click", function () {
     openCart.style.display = "block";
+    openCartFN();
   });
 
   // if we click open cart transparent div  close the cart
@@ -526,7 +540,7 @@
     background-color: white;
     /* width: 330px; */
     position: absolute;
-    right:30px;
+    right: 30px;
     top: 120px;
     /* padding: 30px 20px; */
     font-family: "Inter", sans-serif;
@@ -565,16 +579,14 @@
   .Login-register-Box > h4 > span {
     color: #65707b;
   }
-  .SignIn-with {
+  .SignIn-with-Button {
     margin: 25px 0px 15px 0px;
   }
-  .SignIn-with a {
-    text-decoration: none;
-    color: #ea2384;
-  }
-  .SignIn-with span {
+
+  .SignIn-with-Button span {
     margin-left: 20px;
   }
+
   .Login-register-Box button {
     width: 90%;
     padding: 13px;
@@ -584,6 +596,11 @@
     cursor: pointer;
     color: #ea2384;
     font-weight: bolder;
+  }
+  .Login-register-Box button:hover {
+    transform: scale(0.98);
+    background-color: #f9f0f5;
+    transition: 0.15s;
   }
   .Google-button {
     display: flex;

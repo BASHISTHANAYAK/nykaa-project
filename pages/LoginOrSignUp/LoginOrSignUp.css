@@ -49,6 +49,13 @@ body {
   border: none;
   border: 1px solid red;
 }
+/* if-A-RegisteredUser */
+.if-A-RegisteredUser {
+  display: block;
+  display: inline-block;
+  margin: auto;
+  margin-top: 20px;
+}
 .Proceed-BUTTON {
   margin-top: 150px;
 }
@@ -61,18 +68,18 @@ body {
   font-weight: bolder;
   font-size: 18px;
 }
-.otp-secction{
+.otp-secction {
   display: none;
   margin-top: 20%;
   width: 100%;
   border: none;
   border-bottom: 1px solid red;
 }
-.otp-secction input{
+.otp-secction input {
   padding: 15px 0px;
   border: none;
-
+  width: 100%;
 }
-.otp-secction input:focus{
+.otp-secction input:focus {
   outline: none;
 }

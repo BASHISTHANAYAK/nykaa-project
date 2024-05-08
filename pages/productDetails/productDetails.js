@@ -21,7 +21,7 @@ fetch("/assets/footer.html")
     })
 
 
-// Getting saved product details from sessionStorage
+// Getting saved product details from sessionStorage and display it on product page
 let selectedProduct = JSON.parse(sessionStorage.getItem('selectedProduct'));
 
 if (selectedProduct) {
@@ -45,46 +45,29 @@ if (selectedProduct) {
     //price
     let price = document.querySelector(".price")
     price.innerText += ` ₹${selectedProduct.price} `
-
-    // AddToBag
     let AddToBag = document.querySelector(".AddToBag");
+
+
+
+
+
+
+    // check if user signedin or not if not then show signin button 
+
     let getUserInfo = JSON.parse(sessionStorage.getItem("userDetails"));
-    if (!getUserInfo) {
-        // If user details are not found, create a new object
-        getUserInfo = {
-            Name: "Bashistha NAYAK",
-            email: "bashistha0007@gmail.com",
-            phoneNumber: "0843112241"
-        };
-        sessionStorage.setItem("userDetails", JSON.stringify(getUserInfo));
-    }
-
-    // Initialize CartProducts as an empty array if it doesn't exist
-    if (!getUserInfo.CartProducts) {
-        getUserInfo.CartProducts = [];
-    }
-
-    // click cart button
-    AddToBag.addEventListener("click", addToCart);
-    function addToCart() {
-        if (!getUserInfo.Name || !getUserInfo.email || !getUserInfo.phoneNumber) {
-            window.location.href = "/pages/LoginOrSignUp/LoginOrSignUp.html";
-            return;
+    if (!getUserInfo ||
+        !getUserInfo.Name ||
+        !getUserInfo.email ||
+        !getUserInfo.phoneNumber) {
+        AddToBag.innerText = "SignUp / SignIn"
+        // click cart button if loggedin else goto login page
+        AddToBag.addEventListener("click", addToCart)
+        function addToCart() {
+            window.location.href = "/pages/LoginOrSignUp/LoginOrSignUp.html"
+            return
         }
-
-        // Check if the selected product is already in CartProducts
-        let isAlreadyInCart = getUserInfo.CartProducts.some(product => product.id === selectedProduct.id);
-        if (isAlreadyInCart) {
-            alert("Product already in the cart");
-            return;
-        }
-
-        // Save the object to session storage
-        selectedProduct.numberOfProduct = 1;
-        getUserInfo.CartProducts.push(selectedProduct);
-        sessionStorage.setItem("userDetails", JSON.stringify(getUserInfo));
-        alert("Product added to Bag!");
     }
-} else {
-    window.location.href = "/index.html";
+
+
+
 }
