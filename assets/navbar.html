@@ -192,7 +192,9 @@
 
   // logout button
   let LogOutBtn = document.querySelector(".logout");
-  LogOutBtn.addEventListener("click", function () {});
+  LogOutBtn.addEventListener("click", function () {
+    sessionStorage.clear();
+  });
 
   //openCart
   const openCart = document.querySelector(".openCart");

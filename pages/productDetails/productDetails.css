@@ -65,7 +65,7 @@ h4 {
   margin-bottom: 0;
   color: #5f7388;
 }
-.previousMRP{
+.previousMRP {
   text-decoration-line: line-through;
 }
 .inclusive-taxes {
@@ -87,6 +87,16 @@ h4 {
   background-color: #e80071;
   font-weight: bolder;
   cursor: pointer;
+  border-radius: 3px;
+}
+.details-AddToBag-section button:hover {
+  transform: scale(0.98);
+  transition: 0.15s;
+}
+.details-AddToBag-section button:active {
+  transform: scale(0.95);
+  background-color: #eb2585;
+  transition: 0.15s;
 }
 @media screen and (max-width: 897px) {
   .product-Container {
