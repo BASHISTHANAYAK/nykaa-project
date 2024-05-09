@@ -280,10 +280,27 @@
   }
 </style>
 
+<!-- let LoggedUser = JSON.parse(sessionStorage.getItem("userDetails"));
+let allUsers = JSON.parse(localStorage.getItem("AllRegisteredUsers"));
+let LoggedInUserDetails = allUsers.find(
+  (obj) => LoggedUser.email == obj.email
+); //a obj
+let productsInTheUserCart = LoggedInUserDetails.CartProducts; //give an array -->
+
 <script>
   // if product aded in the cart show it in the cart
-  let LoggedInUserDetails = JSON.parse(sessionStorage.getItem("userDetails"));
-  let productsInTheUserCart = LoggedInUserDetails.CartProducts;
+
+  // pre
+  // let LoggedInUserDetails = JSON.parse(sessionStorage.getItem("userDetails"));
+  // let productsInTheUserCart = LoggedInUserDetails.CartProducts;
+
+  // new
+  let LoggedUser = JSON.parse(sessionStorage.getItem("userDetails")); //from sessionStorage
+  let allUsers = JSON.parse(localStorage.getItem("AllRegisteredUsers"));
+  let LoggedInUserDetails = allUsers.find(
+    (obj) => LoggedUser.email == obj.email
+  ); //a obj
+  let productsInTheUserCart = LoggedInUserDetails.CartProducts; //give an array
 
   // console.log("productsInTheUserCart", productsInTheUserCart);
   let BagEmptyPart = document.querySelector(".BagEmpty-Part");
@@ -337,12 +354,24 @@
           <select  data-index=${i} name="${obj.productName}" data-prc="${
           obj.price
         }" class="quantitySelect">
-            <option value="1" >1</option>
-            <option value="2" >2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
+            <option value="1" ${
+              obj.numberOfProduct === 1 ? "selected" : ""
+            }>1</option>
+            <option value="2" ${
+              obj.numberOfProduct === 2 ? "selected" : ""
+            }>2</option>
+            <option value="3" ${
+              obj.numberOfProduct === 3 ? "selected" : ""
+            }>3</option>
+            <option value="4" ${
+              obj.numberOfProduct === 4 ? "selected" : ""
+            }>4</option>
+            <option value="5" ${
+              obj.numberOfProduct === 5 ? "selected" : ""
+            }>5</option>
+            <option value="6" ${
+              obj.numberOfProduct === 6 ? "selected" : ""
+            }>6</option>
           </select>
         </p>
         <p ><span class="previous-price">₹${
@@ -353,9 +382,6 @@
       </div>
       `;
 
-        // const firstChild = BagNonEmptySection.firstChild;
-        // BagNonEmptySection.insertBefore(aProductDiv, firstChild);
-        // BagNonEmptySection.append(aProductDiv);
         productsAndItsQuantityBOX.append(aProductDiv);
       });
     }
@@ -410,16 +436,43 @@
         let previousPrice = document.querySelectorAll(".previous-price");
         let currentPrice = document.querySelectorAll(".current-Price");
 
-        // finding the Product object by its id and adding the selected quantity
+        // finding the Product object by its index and adding the selected quantity
         productsInTheUserCart[SelectTAGIndex].numberOfProduct =
           Number(selectedValue);
-
-        sessionStorage.setItem(
-          "userDetails",
-          JSON.stringify(LoggedInUserDetails)
+        // new
+        LoggedInUserDetails = allUsers.find(
+          (obj) => LoggedUser.email == obj.email
+        ); //a obj
+        LoggedInUserDetails.CartProducts = productsInTheUserCart;
+        let index = allUsers.findIndex(
+          (obj) => obj.id === LoggedInUserDetails.id
         );
-        LoggedInUserDetails = JSON.parse(sessionStorage.getItem("userDetails"));
-        productsInTheUserCart = LoggedInUserDetails.CartProducts;
+        let newArray =
+          index !== -1
+            ? [
+                ...allUsers.slice(0, index),
+                LoggedInUserDetails, // Updated object
+                ...allUsers.slice(index + 1),
+              ]
+            : allUsers;
+        localStorage.setItem("AllRegisteredUsers", JSON.stringify(newArray));
+
+        // pre
+        // sessionStorage.setItem(
+        //   "userDetails",
+        //   JSON.stringify(LoggedInUserDetails)
+        // );
+
+        // pre
+        // LoggedInUserDetails = JSON.parse(sessionStorage.getItem("userDetails"));
+        // productsInTheUserCart = LoggedInUserDetails.CartProducts;
+
+        allUsers = JSON.parse(localStorage.getItem("AllRegisteredUsers"));
+        LoggedInUserDetails = allUsers.find(
+          (obj) => LoggedUser.email == obj.email
+        ); //a obj
+        productsInTheUserCart = LoggedInUserDetails.CartProducts; //give an array
+
         // changing the productdetail's price as we select quantity
         currentPrice[i].innerText = "";
         currentPrice[i].innerText =
@@ -434,7 +487,9 @@
       }
     });
 
-    // delete functionality
+    // every thing working till adding products and qut. update
+
+    delete functionality;
     document
       .querySelector(".products-And-ItsQuantity-BOX")
       .addEventListener("click", function (e) {
@@ -442,25 +497,60 @@
           let clickedIndex = e.target.dataset.deleteindex;
           console.log("clickedIndex-", clickedIndex);
 
-          LoggedInUserDetails = JSON.parse(
-            sessionStorage.getItem("userDetails")
-          );
-          productsInTheUserCart = LoggedInUserDetails.CartProducts;
+          // pre
+          // LoggedInUserDetails = JSON.parse(
+          //   sessionStorage.getItem("userDetails")
+          // );
+          // productsInTheUserCart = LoggedInUserDetails.CartProducts;
 
-          let newArray = productsInTheUserCart.filter(
+          // new
+          allUsers = JSON.parse(localStorage.getItem("AllRegisteredUsers"));
+          LoggedInUserDetails = allUsers.find(
+            (obj) => LoggedUser.email == obj.email
+          ); //a obj
+          productsInTheUserCart = LoggedInUserDetails.CartProducts; //give an array
+
+          let newArrayAfterDeleting = productsInTheUserCart.filter(
             (obj, index) => index !== +clickedIndex
           );
 
-          console.log("newArray-", newArray);
-          LoggedInUserDetails.CartProducts = newArray;
-          sessionStorage.setItem(
-            "userDetails",
-            JSON.stringify(LoggedInUserDetails)
+          // new
+          //  console.log("newArray-", newArrayAfterDeleting);
+          LoggedInUserDetails.CartProducts = newArrayAfterDeleting;
+
+          index = allUsers.findIndex(
+            (obj) => obj.id === LoggedInUserDetails.id
           );
-          LoggedInUserDetails = JSON.parse(
-            sessionStorage.getItem("userDetails")
-          );
+
+          newArray =
+            index !== -1
+              ? [
+                  ...allUsers.slice(0, index),
+                  LoggedInUserDetails, // Updated object
+                  ...allUsers.slice(index + 1),
+                ]
+              : allUsers;
+          localStorage.setItem("AllRegisteredUsers", JSON.stringify(newArray));
+
+          //pre
+          // sessionStorage.setItem(
+          //   "userDetails",
+          //   JSON.stringify(LoggedInUserDetails)
+          // );
+
+          //pre
+          // LoggedInUserDetails = JSON.parse(
+          //   sessionStorage.getItem("userDetails")
+          // );
+          // productsInTheUserCart = LoggedInUserDetails.CartProducts;
+
+          // new
+          allUsers = JSON.parse(localStorage.getItem("AllRegisteredUsers"));
+          LoggedInUserDetails = allUsers.find(
+            (obj) => LoggedUser.email == obj.email
+          ); //a obj
           productsInTheUserCart = LoggedInUserDetails.CartProducts;
+
           createProductBOX(productsInTheUserCart);
           PriceDetailsPART(productsInTheUserCart);
         }
@@ -470,13 +560,33 @@
       .querySelector(".orderPlaced")
       .addEventListener("click", orderPlaced);
     function orderPlaced() {
-      window.location.href = "/pages/orderPlacedSuccessfully/orderPlaced.html";
-      LoggedInUserDetails = JSON.parse(sessionStorage.getItem("userDetails"));
+      // LoggedInUserDetails = JSON.parse(sessionStorage.getItem("userDetails"));
+      // LoggedInUserDetails.CartProducts = [];
+      // sessionStorage.setItem(
+      //   "userDetails",
+      //   JSON.stringify(LoggedInUserDetails)
+      // );
+
+      allUsers = JSON.parse(localStorage.getItem("AllRegisteredUsers"));
+      LoggedInUserDetails = allUsers.find(
+        (obj) => LoggedUser.email == obj.email
+      ); //a obj
+
       LoggedInUserDetails.CartProducts = [];
-      sessionStorage.setItem(
-        "userDetails",
-        JSON.stringify(LoggedInUserDetails)
-      );
+
+      index = allUsers.findIndex((obj) => obj.id === LoggedInUserDetails.id);
+
+      newArray =
+        index !== -1
+          ? [
+              ...allUsers.slice(0, index),
+              LoggedInUserDetails, // Updated object
+              ...allUsers.slice(index + 1),
+            ]
+          : allUsers;
+      localStorage.setItem("AllRegisteredUsers", JSON.stringify(newArray));
+
+           window.location.href = "/pages/orderPlacedSuccessfully/orderPlaced.html";
     }
   }
 </script>

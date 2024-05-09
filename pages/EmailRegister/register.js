@@ -34,7 +34,7 @@ REGISTER.addEventListener("click", function () {
         sessionStorageData["Name"] = Name.value;
         sessionStorageData["phoneNumber"] = Phone.value;
         sessionStorageData["email"] = Email.value;
-        sessionStorageData["cart"] = []
+        sessionStorageData["CartProducts"] = []
         //saving registered user into localstorage 
         AllRegisteredUsers.push(sessionStorageData)
         localStorage.setItem("AllRegisteredUsers", JSON.stringify(AllRegisteredUsers));

@@ -28,7 +28,7 @@ SAVE.addEventListener("click", function () {
     } else {
         sessionStorageData["Name"] = fullName.value;
         sessionStorageData["email"] = email.value;
-        sessionStorageData["cart"] = []
+        sessionStorageData["CartProducts"] = []
         AllRegisteredUsers.push(sessionStorageData)
         localStorage.setItem("AllRegisteredUsers", JSON.stringify(AllRegisteredUsers));
         // and a copy session storage for logout purpose

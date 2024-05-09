@@ -139,7 +139,7 @@
 <script>
   //getting logged in user data
   let sessionStorageDATA = JSON.parse(sessionStorage.getItem("userDetails"));
-  console.log("nav sessionStorageDATA-", sessionStorageDATA);
+  // console.log("nav sessionStorageDATA-", sessionStorageDATA);
 
   let navSignIn = document.querySelector(".nav-signIn"); //signin button
 
@@ -198,7 +198,6 @@
 
   //openCart
   const openCart = document.querySelector(".openCart");
-  openCartFN();
   function openCartFN() {
     fetch("/assets/cart.html")
       .then((res) => res.text())

@@ -68,12 +68,13 @@ if (selectedProduct) {
         AddToBag.addEventListener("click", addToCart)
         function addToCart() {
             // check if the selected product is in the user's cart or not 
-            let isProductAlreadyAdded = loggedInuserData["cart"].some((obj) => obj.id == selectedProduct.id) // give true or false
-            // console.log("isProductAlreadyAdded-", isProductAlreadyAdded);
+            let isProductAlreadyAdded = loggedInuserData["CartProducts"].find((obj) => obj.id == selectedProduct.id) // give a obj or undefined
+            console.log("isProductAlreadyAdded-", isProductAlreadyAdded);
             if (isProductAlreadyAdded) {
                 alert('Product already in the cart')
             } else {
-                loggedInuserData["cart"].push(selectedProduct);
+                selectedProduct["numberOfProduct"] = 1
+                loggedInuserData["CartProducts"].push(selectedProduct);
                 localStorage.setItem("AllRegisteredUsers", JSON.stringify(getAllusersData))
                 alert('Product added to Cart');
 
