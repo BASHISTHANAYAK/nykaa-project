@@ -15,7 +15,6 @@ body {
   object-fit: cover;
 }
 .product-Container {
-  /* border: 1px solid blue; */
   width: 80%;
   height: 400px;
   margin: 10px auto auto auto;
@@ -26,7 +25,6 @@ body {
   flex-wrap: wrap;
 }
 .product-Container > section {
-  /* border: 1px solid red; */
   height: 100%;
 }
 /* diffImages-Section */
@@ -117,5 +115,10 @@ h4 {
   }
   .details-AddToBag-section button {
     margin-top: 20px;
+  }
+  .diffImages-Section > img {
+    width:60%;
+    height: 70%;
+    object-fit: contain;
   }
 }

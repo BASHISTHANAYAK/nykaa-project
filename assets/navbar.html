@@ -31,9 +31,7 @@
         <a href="/index.html">
           <img
             src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Nykaa_New_Logo.svg/1200px-Nykaa_New_Logo.svg.png"
-            alt=""
-            class="Nykaa-Logo"
-          />
+            alt="" class="Nykaa-Logo" />
         </a>
       </b>
       <b>Categories</b>
@@ -79,8 +77,7 @@
         <button class="Google-button">
           <img
             src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/1200px-Google_%22G%22_logo.svg.png"
-            alt=""
-          />Google
+            alt="" />Google
         </button>
       </section>
       <!-- transparent-Container END-->
@@ -115,10 +112,7 @@
     <div class="hamberger-logo-div">
       <i class="fa-regular fa-bars"></i>
       <a href="/index.html">
-        <img
-          src="https://prodmarc.com/assets/img/clients/nykaa-logo-freelogovectors.net_.png"
-          alt=""
-        />
+        <img src="https://prodmarc.com/assets/img/clients/nykaa-logo-freelogovectors.net_.png" alt="" />
       </a>
     </div>
     <div class="bag-profile-div">
@@ -139,7 +133,7 @@
 <script>
   //getting logged in user data
   let sessionStorageDATA = JSON.parse(sessionStorage.getItem("userDetails"));
-  // console.log("nav sessionStorageDATA-", sessionStorageDATA);
+  console.log("nav sessionStorageDATA-", sessionStorageDATA);
 
   let navSignIn = document.querySelector(".nav-signIn"); //signin button
 
@@ -198,29 +192,26 @@
 
   //openCart
   const openCart = document.querySelector(".openCart");
-  function openCartFN() {
-    fetch("/assets/cart.html")
-      .then((res) => res.text())
-      .then((data) => {
-        openCart.innerHTML += data;
-
-        // for js part
-        const parser = new DOMParser();
-        const doc = parser.parseFromString(data, "text/html");
-        eval(doc.querySelector("script").textContent);
-      });
-  }
 
   //fa-bag-shopping  when we click the cart button to show the cart page
   let cartIcon = document.querySelector(".fa-bag-shopping");
   cartIcon.addEventListener("click", function () {
     openCart.style.display = "block";
-    openCartFN();
+    fetch("/assets/cart.html")
+      .then((res) => res.text())
+      .then((data) => {
+        openCart.innerHTML += data;
+        // for js part
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(data, "text/html");
+        eval(doc.querySelector("script").textContent);
+      });
   });
 
   // if we click open cart transparent div  close the cart
   openCart.addEventListener("click", (event) => {
     if (event.target === openCart) {
+      openCart.innerHTML = ""
       openCart.style.display = "none";
     } else {
       event.stopPropagation();
@@ -239,21 +230,25 @@
     align-items: center;
     justify-content: space-between;
   }
-  .scroller--And--options--div > section {
+
+  .scroller--And--options--div>section {
     /* border: 1px solid; */
     display: flex;
     align-items: center;
   }
-  .scroller--And--options--div > section:first-child {
+
+  .scroller--And--options--div>section:first-child {
     margin-left: 3%;
     color: white;
   }
-  .scroller--And--options--div > section:last-child {
+
+  .scroller--And--options--div>section:last-child {
     margin-right: 3%;
     height: 90%;
     font-weight: 300;
   }
-  .options-sections > ul {
+
+  .options-sections>ul {
     /* border: 1px solid white; */
     display: flex;
     list-style: none;
@@ -261,24 +256,28 @@
     justify-content: center;
     padding: 0;
   }
-  .options-sections > ul > b {
+
+  .options-sections>ul>b {
     padding: 0px 15px;
     font-size: 15px;
     font-weight: 200;
     color: white;
   }
-  .options-sections > ul > li {
+
+  .options-sections>ul>li {
     /* border: 1px solid; */
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
   }
-  .options-sections > ul > li > a {
+
+  .options-sections>ul>li>a {
     text-decoration: none;
     color: white;
   }
-  .options-sections > ul > li i {
+
+  .options-sections>ul>li i {
     margin-right: 5px;
   }
 
@@ -290,12 +289,14 @@
     justify-content: space-between;
     padding: 10px 0px;
   }
-  nav > section {
+
+  nav>section {
     /* border: 1px solid red; */
     display: flex;
     align-items: center;
   }
-  nav > section:first-child {
+
+  nav>section:first-child {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -307,16 +308,18 @@
     font-size: 1rem;
     padding-left: 20px;
   }
+
   #image-And-PagesLink b .Nykaa-Logo {
     height: 30px;
     padding: 0;
     margin: 0;
   }
 
-  nav > .searrch-SignIn-Bag {
+  nav>.searrch-SignIn-Bag {
     margin-right: 2%;
     gap: 10px;
   }
+
   .search-div {
     /* border: 1px dotted green; */
     background-color: #f4f4f4;
@@ -326,20 +329,24 @@
     border-radius: 5px;
     padding-left: 2px;
   }
+
   .search-div i {
     margin-right: 5px;
   }
-  .search-div > input {
+
+  .search-div>input {
     height: 34px;
     width: 200px;
     border: none;
     background-color: #f4f4f4;
     border-radius: 5px;
   }
-  .search-div > input:focus {
+
+  .search-div>input:focus {
     outline: none;
   }
-  .searrch-SignIn-Bag > button {
+
+  .searrch-SignIn-Bag>button {
     height: 40px;
     padding: 2px 17px;
     background-color: #e80071;
@@ -349,14 +356,17 @@
     letter-spacing: 0.1px;
     cursor: pointer;
   }
-  .searrch-SignIn-Bag > button:hover {
+
+  .searrch-SignIn-Bag>button:hover {
     opacity: 0.9;
     transform: scale(0.97);
   }
-  .searrch-SignIn-Bag > button a {
+
+  .searrch-SignIn-Bag>button a {
     text-decoration: none;
     color: inherit;
   }
+
   .fa-bag-shopping {
     font-size: 25px;
     padding-right: 20px;
@@ -374,11 +384,13 @@
     cursor: pointer;
     display: none;
   }
+
   .userName {
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
   }
+
   .IfUserLogedin-ShowName:hover {
     transform: scale(0.9);
     transition: 0.15s ease-in-out;
@@ -400,13 +412,15 @@
     display: none;
   }
 
-  .IfUserLogedin-ShowName:hover ~ .UserHover-On-Profile {
+  .IfUserLogedin-ShowName:hover~.UserHover-On-Profile {
     display: block;
   }
+
   .UserHover-On-Profile:hover {
     display: block;
   }
-  .UserHover-On-Profile > ul {
+
+  .UserHover-On-Profile>ul {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -417,7 +431,8 @@
     padding: 0;
     height: 100%;
   }
-  .UserHover-On-Profile > ul > li {
+
+  .UserHover-On-Profile>ul>li {
     border-top: 1px solid rgb(198, 197, 197);
     list-style: none;
     display: flex;
@@ -427,12 +442,14 @@
     width: 100%;
     padding: 10px 0px 0px 5px;
   }
-  .UserHover-On-Profile > ul > li:hover {
+
+  .UserHover-On-Profile>ul>li:hover {
     transition: 0.15s ease-in-out;
     transform: scale(0.98);
     color: rgb(206, 206, 245);
   }
-  .UserHover-On-Profile > ul > li > a {
+
+  .UserHover-On-Profile>ul>li>a {
     color: black;
     text-decoration: none;
   }
@@ -449,13 +466,14 @@
     border-top: 1px solid #82818d;
     /* margin-top: 110px; */
   }
-  .Diff-product-types-options > li {
+
+  .Diff-product-types-options>li {
     list-style: none;
     /* border: 1px solid; */
     font-size: 14px;
   }
 
-  .Diff-product-types-options > li > a {
+  .Diff-product-types-options>li>a {
     text-decoration: none;
     color: #82818d;
   }
@@ -466,7 +484,8 @@
     padding: 0px 0px 5px 0px;
     box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -7px;
   }
-  .middleAndSmall-screen-header > section:first-child {
+
+  .middleAndSmall-screen-header>section:first-child {
     /* border: 1px solid red; */
     height: 37px;
     display: flex;
@@ -474,7 +493,8 @@
     justify-content: space-between;
     padding: 0px 10px;
   }
-  .middleAndSmall-screen-header > section:first-child > div {
+
+  .middleAndSmall-screen-header>section:first-child>div {
     /* border: 1px solid green; */
     display: flex;
   }
@@ -483,13 +503,15 @@
     width: 55px;
     margin-left: 15px;
   }
+
   .bag-profile-div {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 25px;
   }
-  .middleAndSmall-screen-header > section:last-child {
+
+  .middleAndSmall-screen-header>section:last-child {
     /* border: 1px dotted blue; */
     height: 40px;
     padding: 0px 10px;
@@ -497,6 +519,7 @@
     align-items: center;
     justify-content: center;
   }
+
   .search-box-container {
     width: 95%;
     display: flex;
@@ -507,10 +530,12 @@
     background-color: #f3f4f5;
     padding: 0px 12px;
   }
-  .search-box-container > i {
+
+  .search-box-container>i {
     color: #e9318b;
   }
-  .search-box-container > input {
+
+  .search-box-container>input {
     border: none;
     padding: 10px;
     width: 100%;
@@ -525,6 +550,7 @@
   #Login-register-Box {
     display: none;
   }
+
   .transparent-Container {
     /* border: 3px solid red; */
     background-color: rgba(157, 163, 157, 0);
@@ -535,6 +561,7 @@
     height: 100vh;
     z-index: 100;
   }
+
   .Login-register-Box {
     /* border: 2px solid red; */
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
@@ -549,6 +576,7 @@
     z-index: 200;
     padding: 33px 0px 33px 33px;
   }
+
   .Login-register-Box::before {
     content: "";
     width: 30px;
@@ -561,25 +589,30 @@
     border-top: 1px solid rgba(99, 99, 99, 0.2);
     border-left: 1px solid rgba(99, 99, 99, 0.2);
   }
+
   .Login-register-Box * {
     margin: 0;
   }
-  .Login-register-Box > h1 {
+
+  .Login-register-Box>h1 {
     /* border: 1px solid blue; */
     width: 90%;
     font-size: 22px;
     font-weight: 400;
   }
-  .Login-register-Box > h4 {
+
+  .Login-register-Box>h4 {
     /* border: 1px solid red; */
     margin-top: 6px;
     color: #a4aab1;
     width: 90%;
     font-weight: 500;
   }
-  .Login-register-Box > h4 > span {
+
+  .Login-register-Box>h4>span {
     color: #65707b;
   }
+
   .SignIn-with-Button {
     margin: 25px 0px 15px 0px;
   }
@@ -598,18 +631,21 @@
     color: #ea2384;
     font-weight: bolder;
   }
+
   .Login-register-Box button:hover {
     transform: scale(0.98);
     background-color: #f9f0f5;
     transition: 0.15s;
   }
+
   .Google-button {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 3px;
   }
-  .Google-button > img {
+
+  .Google-button>img {
     width: 20px;
   }
 
@@ -627,6 +663,7 @@
     background-color: rgba(136, 136, 136, 0.2);
     z-index: 800;
   }
+
   .middleAndSmall-screen-header,
   .openCart {
     display: none;
@@ -636,6 +673,7 @@
     margin-right: 0%;
     gap: 10px;
   }
+
   .fa-bag-shopping {
     margin: 0px;
   }
@@ -646,14 +684,16 @@
     gap: 1.5%;
     padding: 0;
   }
+
   /* .middleAndSmall-screen-header  CSS END *****************************/
 
   /* Media query ******************* */
   @media screen and (max-width: 1000px) {
-    .scroller--And--options--div > section:first-child {
+    .scroller--And--options--div>section:first-child {
       padding: 0px;
       margin: 0;
     }
+
     nav img {
       padding: 0px;
       margin: 0;
@@ -666,6 +706,7 @@
       font-size: 1rem;
       padding-left: 10px;
     }
+
     #image-And-PagesLink b .Nykaa-Logo {
       height: 30px;
       padding: 0;
@@ -682,6 +723,7 @@
 
   /* middle and small screen */
   @media screen and (max-width: 897px) {
+
     .big-screen-header,
     .Diff-product-types-options {
       display: none;

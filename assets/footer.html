@@ -15,26 +15,19 @@
       <span>EXPERIENCE THE NYKAA MOBILE APP</span>
     </p>
     <p>
-      <a href=""
-        ><img
-          src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
-          alt=""
-      /></a>
-      <a href=""
-        ><img
+      <a href=""><img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
+          alt="" /></a>
+      <a href=""><img
           src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Download_on_the_App_Store_Badge.svg/2560px-Download_on_the_App_Store_Badge.svg.png"
-          alt=""
-      /></a>
+          alt="" /></a>
     </p>
   </div>
 
   <div class="call-div">
     <p>
       <i class="fa-solid fa-phone"></i>
-      <span
-        >FOR ANY HELP, YOU MAY CALL US AT <br />
-        1800-267-4444</span
-      >
+      <span>FOR ANY HELP, YOU MAY CALL US AT <br />
+        1800-267-4444</span>
     </p>
     <p class="daysInfo">
       (Monday to Saturday, 8AM to 10PM and Sunday, 10AM to 7PM)
@@ -45,11 +38,7 @@
 <section class="Footer-Links">
   <ul>
     <li>
-      <img
-        src="https://zeevector.com/wp-content/uploads/Nykaa-Logo-White@zeevector.png"
-        alt=""
-        srcset=""
-      />
+      <img src="https://zeevector.com/wp-content/uploads/Nykaa-Logo-White@zeevector.png" alt="" srcset="" />
     </li>
     <li><a href=""> Who are we?</a></li>
     <li><a href=""> Careers</a></li>
@@ -121,6 +110,7 @@
     width: 100%;
     height: auto;
   }
+
   .brown-Section {
     /* border: 1px dotted red; */
     height: 50px;
@@ -130,36 +120,48 @@
 
   /*  .mail-And-Download  */
   .mail-And-Download {
+    /* border: 1px solid blue; */
     /* height: 150px; */
     background-color: #3a4047;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    flex-wrap: wrap;
+    /* display: flex; */
+    /* align-items: center; */
+    /* justify-content: space-around; */
+    /* flex-wrap: wrap; */
     padding: 40px 0px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+    grid-auto-rows: auto;
+    gap: 10px;
   }
-  .mail-And-Download > div {
-    /* border: 1px solid wheat; */
+
+  .mail-And-Download>div {
+    /* border: 1px solid red; */
     width: auto;
     color: white;
     padding: 5px;
     margin-top: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
 
-  .email-ANd-input > p {
+  .email-ANd-input>p {
     display: flex;
     align-items: center;
     justify-content: flex-start;
     gap: 5px;
     margin-top: 10px;
   }
-  .email-ANd-input > p > input {
+
+  .email-ANd-input>p>input {
     padding: 10px;
     background-color: transparent;
     border: none;
     border-bottom: 1px solid white;
   }
-  .email-ANd-input > p > button {
+
+  .email-ANd-input>p>button {
     padding: 10px;
     background-color: transparent;
     color: white;
@@ -167,7 +169,7 @@
     border: 1px solid white;
   }
 
-  .download-Apps > p {
+  .download-Apps>p {
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -175,17 +177,19 @@
     margin-top: 7px;
   }
 
-  .download-Apps img {
-    width: 140px;
+  .download-Apps a img {
+    width: 110px;
   }
 
-  .call-div > p {
+  .call-div>p {
     display: flex;
     align-items: center;
     justify-content: flex-start;
     gap: 10px;
     margin-top: 7px;
+    font-size: 13px;
   }
+
   .daysInfo {
     margin-left: 35px;
   }
@@ -198,23 +202,28 @@
     align-items: center;
     justify-content: space-around;
   }
-  .Footer-Links > ul {
+
+  .Footer-Links>ul {
     list-style: none;
     /* border: 1px solid white; */
   }
-  .Footer-Links > ul a {
+
+  .Footer-Links>ul a {
     text-decoration: none;
     color: white;
     font-size: 13px;
   }
-  .Footer-Links > ul > li {
+
+  .Footer-Links>ul>li {
     padding: 7px;
   }
-  .Footer-Links > ul > li b {
+
+  .Footer-Links>ul>li b {
     font-size: 17px;
     color: white;
   }
-  .Footer-Links > ul > li > img {
+
+  .Footer-Links>ul>li>img {
     width: 70px;
     margin-bottom: 25px;
   }
@@ -223,31 +232,35 @@
 
 
   @media screen and (max-width: 630px) {
-  .Footer-Links {
-    height: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-   
+    .Footer-Links {
+      height: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-around;
+
+    }
+
+    .Footer-Links ul {
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+
+    }
+
+    .Footer-Links ul {
+      margin: 0;
+    }
+
+    .Footer-Links ul>li {
+      /* border: 1px solid red; */
+      padding: 10px;
+      margin: 0;
+    }
+
+    .Footer-Links>ul>li>img {
+      width: 70px;
+      margin-bottom: 5px;
+    }
   }
-  .Footer-Links ul {
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-   
-  }
-  .Footer-Links ul{
-    margin: 0;
-  }
-  .Footer-Links ul>li{
-    /* border: 1px solid red; */
-    padding: 10px;
-    margin: 0;
-  }
-  .Footer-Links > ul > li > img {
-    width: 70px;
-    margin-bottom: 5px;
-  }
-}
 </style>
