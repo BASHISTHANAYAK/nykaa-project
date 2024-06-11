@@ -46,7 +46,7 @@ function clickProceed() {
             if (isAregisteredUser && isAregisteredUser.length > 0) {
                 showUserName.style.display = "block";
                 // show the user name on screen
-                showUserName.innerText = `Hello ${isAregisteredUser[0].email}`
+                showUserName.innerText = `Hello ${isAregisteredUser[0].Name}`
             }
         }
     }
