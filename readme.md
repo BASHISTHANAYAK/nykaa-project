@@ -38,10 +38,10 @@ This project is a demonstration of [Nykaa](https://www.nykaa.com/), an Indian e-
 
   ![Otp](./images/after%20putting%20emailsOrNumber%20an%20otp%20will%20appear.png)
 
-- After clicking the alert an otp input input will open
+- After clicking the alert an otp input will open
   ![Otp input](./images/After%20clicking%20the%20aleart%20on%20otp%20fill%20input%20will%20open.png)
 
-- After putting a minimum of 4 digit otp verify button will appear
+- After putting a minimum of 4 digit otp verify button now can be used
   ![Verify button](./images/after%20putting%20a%20minimum%20of%204%20digit%20otp%20verify%20button%20will%20appear.png)
 
 - Existing User: If the user is already registered, a greeting text appears with their name, and they only need to enter the correct OTP.
