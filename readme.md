@@ -10,11 +10,11 @@ This project is a demonstration of [Nykaa](https://www.nykaa.com/), an Indian e-
 
 ### Desktop View
 
-<img src="./images/Entire%20home%20page%20for%20big%20screen.png" alt="Large Screen" width="300"/>
+<img src="./images/Entire%20home%20page%20for%20big%20screen.png" alt="Large Screen" width="600"/>
 
 ### Tablet View
 
-<img src="./images/Entire%20home%20page%20for%20mid%20screen.png" alt="Mid Screen" width="300"/>
+<img src="./images/Entire%20home%20page%20for%20mid%20screen.png" alt="Mid Screen" width="450"/>
 
 ### Mobile View
 
