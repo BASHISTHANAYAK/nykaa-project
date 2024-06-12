@@ -79,11 +79,11 @@ https://nykaa-project-zr5t.vercel.app/
 - If again click the addd button for same Product
   ![Adding product to cart](./images/if%20we%20again%20add%20the%20same%20product%20it%20will%20given%20product%20already%20added.png)
 
-  . Cart Summary: Displays total products and total price.
+  - Cart Summary: Displays total products and total price.
 
   ![TOtal products and price ](./images/In%20cart%20we%20can%20see%20Total%20products%20and%20price.png)
 
-  . Quantity and Price Update: Allows changing the quantity of products and updates the total price accordingly.
+  - Quantity and Price Update: Allows changing the quantity of products and updates the total price accordingly.
 
   ![Total products and price ](./images/Can%20also%20change%20the%20quantity%20of%20the%20products.png)
 
