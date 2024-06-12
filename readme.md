@@ -6,6 +6,9 @@ Welcome to the Nykaa project repository!
 
 This project is a demonstration of [Nykaa](https://www.nykaa.com/), an Indian e-commerce website specializing in beauty and wellness products. The project aims to replicate the user interface and functionality of the Nykaa website.
 
+## Live
+https://nykaa-project-zr5t.vercel.app/
+
 ## Screenshots
 
 ### Desktop View
