@@ -90,20 +90,26 @@
   </nav>
 </header>
 
-<!-- Diff-product-types-options   -->
+<!-- Diff-product-types-options  with style -->
 <div class="Diff-product-types-options" id="Diff-product-types-options">
-  <li><a href="">Makeup</a></li>
-  <li><a href="">Skin</a></li>
-  <li><a href="">Hair</a></li>
-  <li><a href="">Appliances</a></li>
-  <li><a href="">Bath & Body</a></li>
-  <li><a href="">Natural</a></li>
-  <li><a href="">Mom & Baby</a></li>
-  <li><a href="">Health & Wellness</a></li>
-  <li><a href="">Men</a></li>
-  <li><a href="">Fragrance</a></li>
-  <li><a href="">Lingerie & Accessories</a></li>
-  <li><a href="">OFFERS</a></li>
+  <li data-id="1"><a data-id="1" href="#">Makeup</a></li>
+  <li data-id="2"><a data-id="2" href="#">Skin</a></li>
+  <li data-id="3"><a data-id="3" href="#">Hair</a></li>
+  <li data-id="4"><a data-id="4" href="#">Appliances</a></li>
+  <li data-id="5"><a data-id="5" href="#">Bath & Body</a></li>
+  <li data-id="6"><a data-id="6" href="#">Natural</a></li>
+  <li data-id="7"><a data-id="7" href="#">Mom & Baby</a></li>
+  <li data-id="8"><a data-id="8" href="#">Health & Wellness</a></li>
+  <li data-id="9"><a data-id="9" href="#">Men</a></li>
+  <li data-id="10"><a data-id="10" href="#">Fragrance</a></li>
+  <li data-id="11"><a data-id="11" href="#">Lingerie & Accessories</a></li>
+  <li data-id="12"><a data-id="12" href="#">OFFERS</a></li>
+  <section id="drop_down_container">
+    <div id="All_Products_of_Aoption"></div>
+
+</div>
+</section>
+
 </div>
 
 <!-- for middle and small screen -->
@@ -128,12 +134,12 @@
   </section>
 </header>
 
-<!-- JS part -->
+<!--JS PART JS PART JS PART JS PART JS PART JS PART JS PART JS PART JS PART JS PART JS PART JS PART -->
 
 <script>
   //getting logged in user data
   let sessionStorageDATA = JSON.parse(sessionStorage.getItem("userDetails"));
-  console.log("nav sessionStorageDATA-", sessionStorageDATA);
+  // console.log("nav sessionStorageDATA-", sessionStorageDATA);
 
   let navSignIn = document.querySelector(".nav-signIn"); //signin button
 
@@ -217,8 +223,203 @@
       event.stopPropagation();
     }
   });
+
+
+
+
+  // <!-- Diff-product-types-options   -->
+  let drop_down_container = document.getElementById("drop_down_container")
+  let DiffProductTypes_Div = document.getElementById("Diff-product-types-options")
+  let itsAtags = DiffProductTypes_Div.querySelectorAll("li")
+  // console.log("DiffProductTypes_Div's itsAtags-", itsAtags);
+  itsAtags.forEach((li, i) => {
+
+    // Add hover effect with mouseover
+    li.addEventListener("mouseover", (e) => {
+
+      let hoverPopUp_Option_Box = document.getElementById("All_Products_of_Aoption")
+
+      hoverPopUp_Option_Box.innerHTML = ""
+      let hoveredTag_ID = e.target.dataset.id
+
+      drop_down_container.classList.add("show");
+
+      const allOptionsDATA = [
+        {
+          id: 1, Option_name: "Makeup", data: [
+            { Heading: "Foundation", Options: ['Liquid', 'Powder', 'Stick', 'Cream', 'Mineral', 'BB Cream', 'CC Cream', 'Tinted Moisturizer', 'Full Coverage', 'Medium Coverage', 'Light Coverage', 'Hydrating', 'Matte'] },
+            { Heading: "Concealer", Options: ['Liquid', 'Cream', 'Stick', 'Pencil', 'Color Correcting', 'Full Coverage', 'Medium Coverage', 'Light Coverage', 'Hydrating', 'Matte', 'Brightening', 'Anti-Aging', 'Waterproof'] },
+            { Heading: "Lipstick", Options: ['Matte', 'Glossy', 'Satin', 'Cream', 'Sheer', 'Liquid', 'Bullet', 'Tinted', 'Long-Lasting', 'Hydrating', 'Plumping', 'Nude', 'Bold'] },
+            { Heading: "Eyeshadow", Options: ['Powder', 'Cream', 'Pencil', 'Liquid', 'Single Shade', 'Palette', 'Matte', 'Shimmer', 'Glitter', 'Neutral', 'Bold', 'Smoky', 'Metallic'] },
+            { Heading: "Mascara", Options: ['Volumizing', 'Lengthening', 'Curling', 'Waterproof', 'Non-Waterproof', 'Colored', 'Clear', 'Lengthening & Volumizing', 'Anti-Smudge', 'Nourishing', 'Lifting', 'Natural'] },
+            { Heading: "Eyeliner", Options: ['Liquid', 'Gel', 'Pencil', 'Retractable', 'Waterproof', 'Non-Waterproof', 'Kohl', 'Felt Tip', 'Retractable', 'Liquid Pen', 'Colored', 'Black', 'Brown'] },
+          ]
+        },
+        {
+          id: 2, Option_name: "Skin Care", data: [
+            { Heading: "Cleanser", Options: ['Foaming', 'Gel', 'Cream', 'Oil', 'Micellar Water', 'Exfoliating', 'Hydrating', 'Sensitive Skin', 'Balancing', 'Clarifying', 'Toning', 'Deep Clean'] },
+            { Heading: "Toner", Options: ['Hydrating', 'Clarifying', 'Exfoliating', 'Alcohol-Free', 'Astringent', 'Balancing', 'Soothing', 'Anti-Aging', 'Pore-Minimizing', 'Brightening', 'Refreshing', 'Nourishing'] },
+            { Heading: "Serum", Options: ['Hydrating', 'Anti-Aging', 'Brightening', 'Pore-Reducing', 'Soothing', 'Firming', 'Oil-Free', 'Vitamin C', 'Hyaluronic Acid', 'Retinol', 'Niacinamide', 'Peptides'] },
+            { Heading: "Moisturizer", Options: ['Hydrating', 'Oil-Free', 'Cream', 'Gel', 'Lotion', 'SPF', 'Night Cream', 'Day Cream', 'Anti-Aging', 'Sensitive Skin', 'Matte', 'Nourishing', 'Brightening'] },
+            { Heading: "Eye Cream", Options: ['Hydrating', 'Anti-Aging', 'Brightening', 'Firming', 'Puffiness Reducing', 'Dark Circle Reducing', 'Lightweight', 'Rich', 'Cooling', 'Non-Greasy', 'Sensitive Skin', 'Overnight'] },
+            { Heading: "Exfoliator", Options: ['Scrub', 'Chemical Peel', 'Glycolic Acid', 'Salicylic Acid', 'Enzyme', 'Physical Exfoliant', 'Chemical Exfoliant', 'Clay', 'Microdermabrasion', 'Toning', 'Gentle', 'Deep Clean'] },
+          ]
+        },
+        {
+          id: 3, Option_name: "Hair Care", data: [
+            { Heading: "Shampoo", Options: ['Clarifying', 'Moisturizing', 'Volume', 'Color-Safe', 'Sulfate-Free', 'Silicone-Free', 'Anti-Dandruff', 'Strengthening', 'Hydrating', 'Repairing', 'Daily', 'Gentle'] },
+            { Heading: "Conditioner", Options: ['Moisturizing', 'Volumizing', 'Color-Safe', 'Leave-In', 'Rinse-Out', 'Deep Conditioning', 'Repairing', 'Hydrating', 'Anti-Frizz', 'Detangling', 'Sulfate-Free', 'Silicone-Free'] },
+            { Heading: "Hair Mask", Options: ['Hydrating', 'Repairing', 'Color-Treated', 'Strengthening', 'Anti-Frizz', 'Smoothing', 'Deep Conditioning', 'Nourishing', 'Clarifying', 'Volumizing', 'Leave-In', 'Overnight'] },
+            { Heading: "Hair Oil", Options: ['Argan Oil', 'Coconut Oil', 'Jojoba Oil', 'Olive Oil', 'Essential Oils', 'Anti-Frizz', 'Hydrating', 'Repairing', 'Heat Protectant', 'Lightweight', 'Nourishing', 'Glossing'] },
+            { Heading: "Hair Styling", Options: ['Hair Gel', 'Hair Spray', 'Mousse', 'Curl Cream', 'Straightening Balm', 'Volumizing Spray', 'Texturizing Spray', 'Heat Protectant', 'Smoothing Cream', 'Frizz Control', 'Flexible Hold', 'Strong Hold'] },
+            { Heading: "Heat Protectant", Options: ['Spray', 'Serum', 'Cream', 'Oil', 'Leave-In', 'Lightweight', 'Non-Greasy', 'Anti-Frizz', 'Nourishing', 'Volumizing', 'Color-Safe', 'Repairing'] },
+          ]
+        },
+        {
+          id: 4, Option_name: "Bath & Body", data: [
+            { Heading: "Body Wash", Options: ['Foaming', 'Gel', 'Cream', 'Exfoliating', 'Moisturizing', 'Sensitive Skin', 'Scented', 'Unscented', 'Hydrating', 'Anti-Bacterial', 'Anti-Aging', 'Daily'] },
+            { Heading: "Body Lotion", Options: ['Hydrating', 'Moisturizing', 'Non-Greasy', 'Scented', 'Unscented', 'Anti-Aging', 'Brightening', 'Repairing', 'Lightweight', 'Rich', 'Sensitive Skin', 'Long-Lasting'] },
+            { Heading: "Body Scrub", Options: ['Exfoliating', 'Sugar Scrub', 'Salt Scrub', 'Creamy', 'Gentle', 'Intense', 'Hydrating', 'Brightening', 'Scented', 'Unscented', 'Organic', 'Anti-Cellulite'] },
+            { Heading: "Body Butter", Options: ['Rich', 'Hydrating', 'Moisturizing', 'Scented', 'Unscented', 'Repairing', 'Anti-Aging', 'Organic', 'Whipped', 'Non-Greasy', 'Quick Absorbing', 'Sensitive Skin'] },
+            { Heading: "Hand Cream", Options: ['Moisturizing', 'Hydrating', 'Anti-Aging', 'Non-Greasy', 'Scented', 'Unscented', 'Repairing', 'Quick Absorbing', 'Sensitive Skin', 'Rich', 'Lightweight', 'Daily'] },
+            { Heading: "Foot Cream", Options: ['Hydrating', 'Moisturizing', 'Exfoliating', 'Anti-Fungal', 'Repairing', 'Scented', 'Unscented', 'Rich', 'Non-Greasy', 'Sensitive Skin', 'Daily', 'Cooling'] },
+          ]
+        },
+        {
+          id: 5, Option_name: "Fragrances", data: [
+            { Heading: "Perfume", Options: ['Eau de Parfum', 'Eau de Toilette', 'Eau de Cologne', 'Parfum', 'Floral', 'Woody', 'Spicy', 'Citrus', 'Fresh', 'Oriental', 'Sweet', 'Musk'] },
+            { Heading: "Eau de Toilette", Options: ['Floral', 'Woody', 'Spicy', 'Citrus', 'Fresh', 'Oriental', 'Sweet', 'Musk', 'Light', 'Daytime', 'Evening', 'Unisex'] },
+            { Heading: "Eau de Cologne", Options: ['Citrus', 'Herbal', 'Fresh', 'Light', 'Refreshing', 'Subtle', 'Unisex', 'Daytime', 'Evening', 'Floral', 'Woody', 'Spicy'] },
+            { Heading: "Body Mist", Options: ['Light', 'Refreshing', 'Floral', 'Citrus', 'Herbal', 'Fruity', 'Sweet', 'Woody', 'Spicy', 'Daytime', 'Evening', 'Unisex'] },
+            { Heading: "Deodorant", Options: ['Spray', 'Roll-On', 'Stick', 'Crystal', 'Antiperspirant', 'Sensitive Skin', 'Scented', 'Unscented', 'Long-Lasting', 'Fresh', 'Moisturizing', 'Alcohol-Free'] },
+            { Heading: "Aftershave", Options: ['Splash', 'Balm', 'Gel', 'Sensitive Skin', 'Hydrating', 'Soothing', 'Scented', 'Unscented', 'Cooling', 'Alcohol-Free', 'Long-Lasting', 'Anti-Irritation'] },
+          ]
+        },
+        {
+          id: 6, Option_name: "Jewelry", data: [
+            { Heading: "Necklaces", Options: ['Chains', 'Lockets', 'Chokers', 'Pendants', 'Bib Necklaces', 'Statement Necklaces', 'Collar Necklaces', 'Bar Necklaces', 'Layered Necklaces', 'Pearl Necklaces', 'Gold Necklaces', 'Silver Necklaces', 'Gemstone Necklaces'] },
+            { Heading: "Earrings", Options: ['Hoops', 'Studs', 'Drop Earrings', 'Chandeliers', 'Ear Cuffs', 'Huggies', 'Tassel Earrings', 'Clip-Ons', 'Dangle Earrings', 'Gold Earrings', 'Silver Earrings', 'Gemstone Earrings', 'Pearl Earrings'] },
+            { Heading: "Bracelets", Options: ['Cuffs', 'Bangels', 'Tennis Bracelets', 'Charm Bracelets', 'Beaded Bracelets', 'Leather Bracelets', 'Chain Bracelets', 'Stretch Bracelets', 'Link Bracelets', 'Gold Bracelets', 'Silver Bracelets', 'Adjustable Bracelets', 'Personalized Bracelets'] },
+            { Heading: "Rings", Options: ['Engagement Rings', 'Wedding Bands', 'Solitaire Rings', 'Cocktail Rings', 'Stackable Rings', 'Promise Rings', 'Birthstone Rings', 'Gold Rings', 'Silver Rings', 'Gemstone Rings', 'Vintage Rings', 'Adjustable Rings', 'Custom Rings'] },
+            { Heading: "Watches", Options: ['Analog Watches', 'Digital Watches', 'Smart Watches', 'Chronograph Watches', 'Luxury Watches', 'Quartz Watches', 'Automatic Watches', 'Dress Watches', 'Diving Watches', 'Sports Watches', 'Leather Band Watches', 'Metal Band Watches', 'Fashion Watches'] },
+            { Heading: "Brooches", Options: ['Vintage Brooches', 'Enamel Brooches', 'Gemstone Brooches', 'Pin Brooches', 'Flower Brooches', 'Animal Brooches', 'Custom Brooches', 'Decorative Brooches', 'Classic Brooches', 'Modern Brooches', 'Gold Brooches', 'Silver Brooches', 'Themed Brooches'] },
+          ]
+        },
+        {
+          id: 7, Option_name: "Health & Wellness", data: [
+            { Heading: "Supplements", Options: ['Multivitamins', 'Fish Oil', 'Probiotics', 'Vitamin C', 'Vitamin D', 'Calcium', 'Iron', 'Magnesium', 'Ginseng', 'Echinacea', 'Turmeric', 'CoQ10', 'Zinc'] },
+            { Heading: "Fitness Gear", Options: ['Yoga Mats', 'Dumbbells', 'Resistance Bands', 'Jump Ropes', 'Kettlebells', 'Medicine Balls', 'Foam Rollers', 'Balance Balls', 'Fitness Trackers', 'Exercise Bikes', 'Treadmills', 'Rowing Machines', 'Strength Training Equipment'] },
+            { Heading: "Healthy Snacks", Options: ['Nuts', 'Granola Bars', 'Fruit Chips', 'Protein Bars', 'Trail Mix', 'Veggie Chips', 'Rice Cakes', 'Dried Fruit', 'Hummus', 'Nut Butters', 'Energy Balls', 'Jerky', 'Seaweed Snacks'] },
+            { Heading: "Stress Relief", Options: ['Essential Oils', 'Herbal Teas', 'Stress Balls', 'Aromatherapy Diffusers', 'Meditation Apps', 'Relaxation Music', 'Massage Tools', 'Stress Relief Supplements', 'Guided Meditations', 'Relaxation Exercises', 'Journaling', 'Mindfulness Apps', 'Breathing Techniques'] },
+            { Heading: "Sleep Aids", Options: ['Melatonin', 'Sleep Masks', 'White Noise Machines', 'Herbal Teas', 'Sleep Supplements', 'Weighted Blankets', 'Sleep Trackers', 'Relaxation Music', 'Aromatherapy', 'Sleep Pillows', 'Bedtime Rituals', 'Cooling Mattress Pads', 'Sleep Apps'] },
+            { Heading: "Immunity Boosters", Options: ['Vitamin C', 'Echinacea', 'Elderberry', 'Probiotics', 'Zinc', 'Garlic', 'Ginger', 'Turmeric', 'Green Tea', 'Elderflower', 'Honey', 'Vitamin D', 'Immune-Boosting Supplements'] },
+          ]
+        },
+        {
+          id: 8, Option_name: "Gifts & Sets", data: [
+            { Heading: "Gift Sets", Options: ['Skincare Sets', 'Makeup Kits', 'Fragrance Sets', 'Body Care Sets', 'Hair Care Sets', 'Bath Sets', 'Wellness Kits', 'Jewelry Sets', 'Fitness Gear Sets', 'Seasonal Gift Sets', 'Personalized Gifts', 'Travel Sets', 'Luxury Sets'] },
+            { Heading: "Personalized Gifts", Options: ['Custom Jewelry', 'Personalized Mugs', 'Engraved Pens', 'Custom Photo Frames', 'Monogrammed Towels', 'Customized Notebooks', 'Personalized Keychains', 'Customized Apparel', 'Engraved Wallets', 'Personalized Phone Cases', 'Custom Home Decor', 'Personalized Bags', 'Custom Gifts'] },
+            { Heading: "Seasonal Gifts", Options: ['Holiday Ornaments', 'Winter Accessories', 'Summer Essentials', 'Spring Flowers', 'Fall Decor', 'Seasonal Candles', 'Holiday Fragrances', 'Seasonal Apparel', 'Festive Jewelry', 'Seasonal Bath Products', 'Special Occasion Gifts', 'Holiday Gift Baskets', 'Seasonal Gift Cards'] },
+            { Heading: "Luxury Gifts", Options: ['Designer Bags', 'High-End Watches', 'Fine Jewelry', 'Luxury Fragrances', 'Premium Skincare', 'Exclusive Apparel', 'Luxury Home Decor', 'High-Quality Electronics', 'Designer Accessories', 'Gourmet Gift Baskets', 'Luxury Experiences', 'Premium Art', 'Exclusive Collectibles'] },
+            { Heading: "Gift Cards", Options: ['Beauty Store Gift Cards', 'Online Retailer Gift Cards', 'Restaurant Gift Cards', 'Travel Gift Cards', 'Fitness Gift Cards', 'Spa Gift Cards', 'Experience Gift Cards', 'Retail Gift Cards', 'Entertainment Gift Cards', 'Customized Gift Cards', 'Prepaid Cards', 'Subscription Gift Cards', 'Charity Gift Cards'] },
+            { Heading: "Home & Living", Options: ['Decorative Pillows', 'Throw Blankets', 'Wall Art', 'Candles', 'Home Fragrances', 'Kitchen Gadgets', 'Cookware Sets', 'Bedding Sets', 'Furniture', 'Lighting', 'Home Organization', 'Garden Accessories', 'Smart Home Devices'] },
+          ]
+        },
+        {
+          id: 9, Option_name: "Books", data: [
+            { Heading: "Fiction", Options: ['Mystery', 'Romance', 'Science Fiction', 'Fantasy', 'Historical Fiction', 'Thriller', 'Young Adult', 'Literary Fiction', 'Adventure', 'Classic', 'Horror', 'Dystopian', 'Contemporary'] },
+            { Heading: "Non-Fiction", Options: ['Biography', 'Self-Help', 'True Crime', 'Memoir', 'Health & Wellness', 'Business', 'History', 'Travel', 'Science', 'Cookbooks', 'Politics', 'Psychology', 'Education'] },
+            { Heading: "Children’s Books", Options: ['Picture Books', 'Early Readers', 'Chapter Books', 'Middle Grade', 'Young Adult', 'Fairy Tales', 'Adventure', 'Educational', 'Classic', 'Fantasy', 'Contemporary', 'Science Fiction', 'Graphic Novels'] },
+            { Heading: "Textbooks", Options: ['Science', 'Mathematics', 'History', 'Literature', 'Business', 'Economics', 'Engineering', 'Computer Science', 'Medicine', 'Law', 'Psychology', 'Sociology', 'Education'] },
+            { Heading: "Cookbooks", Options: ['Baking', 'Vegetarian', 'Vegan', 'Healthy Eating', 'World Cuisine', 'Desserts', 'Quick Meals', 'Gourmet', 'Comfort Food', 'Grilling', 'Ethnic Cuisine', 'Family Meals', 'Special Diets'] },
+            { Heading: "Graphic Novels", Options: ['Superheroes', 'Manga', 'Sci-Fi', 'Fantasy', 'Historical', 'Slice of Life', 'Horror', 'Adventure', 'Mystery', 'Romance', 'Young Adult', 'Classic', 'Contemporary'] },
+          ]
+        },
+        {
+          id: 10, Option_name: "Music & Movies", data: [
+            { Heading: "Music", Options: ['Pop', 'Rock', 'Classical', 'Jazz', 'Blues', 'Country', 'Hip Hop', 'Electronic', 'Reggae', 'Folk', 'R&B', 'Metal', 'Alternative'] },
+            { Heading: "Movies", Options: ['Action', 'Comedy', 'Drama', 'Horror', 'Romance', 'Science Fiction', 'Fantasy', 'Thriller', 'Documentary', 'Animated', 'Musical', 'Mystery', 'Adventure'] },
+            { Heading: "Concerts", Options: ['Rock Concerts', 'Classical Concerts', 'Jazz Performances', 'Pop Concerts', 'Music Festivals', 'Local Bands', 'International Acts', 'Symphonies', 'Chamber Music', 'Opera', 'Folk Music', 'Electronic Music', 'Live Shows'] },
+            { Heading: "Music Accessories", Options: ['Headphones', 'Speakers', 'Guitar Picks', 'Microphones', 'Music Stands', 'Metronomes', 'Tuners', 'Music Software', 'DJ Equipment', 'Recording Equipment', 'Cables', 'Music Notation Software', 'Instrument Cases'] },
+            { Heading: "Streaming Services", Options: ['Music Streaming', 'Video Streaming', 'Podcasts', 'Live TV', 'On-Demand Movies', 'Subscription Services', 'Digital Rentals', 'Music Downloads', 'Video Downloads', 'Exclusive Content', 'Live Performances', 'Original Series', 'Interactive Content'] },
+            { Heading: "Travel Accessories", Options: ['Luggage', 'Travel Pillows', 'Packing Cubes', 'Travel Wallets', 'Passport Holders', 'Travel Toiletry Kits', 'Luggage Tags', 'Portable Chargers', 'Travel Adapters', 'Travel Guides', 'Travel Blankets', 'Packing Organizers', 'Travel Bottles'] },
+
+          ]
+        },
+        {
+          id: 11, Option_name: "Food & Beverages", data: [
+            { Heading: "Snacks", Options: ['Chips', 'Cookies', 'Nuts', 'Granola Bars', 'Pretzels', 'Popcorn', 'Crackers', 'Dried Fruit', 'Trail Mix', 'Rice Cakes', 'Snack Mix', 'Energy Bars', 'Vegetable Chips'] },
+            { Heading: "Beverages", Options: ['Soda', 'Juice', 'Tea', 'Coffee', 'Energy Drinks', 'Water', 'Sports Drinks', 'Flavored Water', 'Herbal Tea', 'Iced Tea', 'Milk', 'Non-Dairy Milk', 'Mocktails'] },
+            { Heading: "Gourmet Foods", Options: ['Cheese', 'Charcuterie', 'Artisan Bread', 'Specialty Oils', 'Gourmet Sauces', 'Craft Chocolates', 'Organic Snacks', 'Premium Nuts', 'Gourmet Coffee', 'Specialty Teas', 'Fine Wines', 'Luxury Desserts', 'Unique Condiments'] },
+            { Heading: "Meal Kits", Options: ['Dinner Kits', 'Lunch Kits', 'Breakfast Kits', 'Vegetarian Kits', 'Vegan Kits', 'Gluten-Free Kits', 'Family Meals', 'Quick Prep Meals', 'Gourmet Kits', 'International Cuisine Kits', 'Healthy Kits', 'Comfort Food Kits', 'Special Diet Kits'] },
+            { Heading: "Alcoholic Beverages", Options: ['Wine', 'Beer', 'Spirits', 'Liqueurs', 'Cocktail Mixes', 'Craft Beer', 'Whiskey', 'Vodka', 'Rum', 'Gin', 'Champagne', 'Cocktail Garnishes', 'Specialty Spirits'] },
+            { Heading: "Highlighter", Options: ['Powder', 'Cream', 'Liquid', 'Stick', 'Balm', 'Dewy', 'Matte', 'Gold', 'Silver', 'Rose Gold', 'Champagne', 'Glitter', 'Subtle'] },
+
+          ]
+        },
+        {
+          id: 12, Option_name: "Office Supplies", data: [
+            { Heading: "Stationery", Options: ['Notebooks', 'Pens', 'Pencils', 'Highlighters', 'Markers', 'Paper Clips', 'Staplers', 'Sticky Notes', 'Envelopes', 'Folders', 'Binder Clips', 'Whiteboard Markers', 'Index Cards'] },
+            { Heading: "Office Furniture", Options: ['Desks', 'Chairs', 'Filing Cabinets', 'Bookshelves', 'Office Tables', 'Storage Units', 'Desk Organizers', 'Ergonomic Chairs', 'Standing Desks', 'Conference Tables', 'Cubicles', 'Lateral File Cabinets', 'Office Partitions'] },
+            { Heading: "Tech Accessories", Options: ['Keyboards', 'Mice', 'Webcams', 'USB Hubs', 'Docking Stations', 'Mouse Pads', 'Headsets', 'Monitors', 'Laptop Stands', 'Cable Management', 'Computer Speakers', 'Printer Accessories', 'External Hard Drives'] },
+            { Heading: "Office Organization", Options: ['Desk Organizers', 'File Holders', 'Document Trays', 'Pen Holders', 'Cable Organizers', 'Drawer Organizers', 'Whiteboards', 'Bulletin Boards', 'Label Makers', 'Shelving Units', 'Storage Bins', 'Desk Mats', 'Desk Lamps'] },
+            { Heading: "Print & Copy", Options: ['Printers', 'Ink Cartridges', 'Copy Paper', 'Printer Paper', 'Labels', 'Shredder', 'Laminator', 'Binding Machines', 'Paper Trimmers', 'Envelope Openers', 'Fax Machines', 'Office Scanners', 'Fax Paper'] },
+            { Heading: "Blush", Options: ['Powder', 'Cream', 'Gel', 'Stick', 'Liquid', 'Matte', 'Shimmer', 'Nude', 'Bold', 'Peach', 'Pink', 'Bronzer', 'Coral'] },
+
+          ]
+        },
+      ];
+
+      //  adding number of sections to the All_Products_of_Aoption div
+      allOptionsDATA.forEach((navbarOption_name, i) => {
+        if (hoveredTag_ID == navbarOption_name.id) {
+          // console.log(navbarOption_name);
+          navbarOption_name.data.forEach((option_Child_box, i) => {
+            let aSection = document.createElement("section");
+
+            // Create heading
+            let heading = document.createElement("h3");
+            // heading.classList.add("heading")
+            heading.textContent = option_Child_box.Heading;
+            aSection.appendChild(heading);
+
+            // Create ul
+            let divTag = document.createElement("div");
+
+            // Use forEach to append li elements to ul
+            option_Child_box.Options.forEach((ele) => {
+              let p = document.createElement("p");
+              p.textContent = ele;
+              divTag.appendChild(p);
+            });
+
+            aSection.appendChild(divTag);
+            hoverPopUp_Option_Box.append(aSection);
+          });
+        }
+      });
+    });
+
+    // drop down hovering
+    drop_down_container.addEventListener("mouseover", (e) => {
+      // drop_down_container.style.display = "block"
+      drop_down_container.classList.add("show");
+    })
+
+    drop_down_container.addEventListener("mouseout", (e) => {
+      // drop_down_container.style.display = "none"
+      drop_down_container.classList.remove("show");
+    })
+
+    //remove hover effect with mouse hover
+    li.addEventListener("mouseout", () => {
+      // drop_down_container.style.display = "none"
+      drop_down_container.classList.remove("show");
+    })
+  })
 </script>
 
+<!-- CSS PART  CSS PART  CSS PART  CSS PART  CSS PART  CSS PART  CSS PART  CSS PART  -->
 <style>
   /* get apps help top section */
   .scroller--And--options--div {
@@ -454,7 +655,38 @@
     text-decoration: none;
   }
 
-  /* Diff-product-types-options ********/
+  /* Diff-product-types-options DROP DOWN********/
+
+  #drop_down_container {
+    /* border: 1px solid green; */
+    width: 91vw;
+    height: 65vh;
+    position: absolute;
+    z-index: 101;
+    top: 9vh;
+    display: grid;
+    place-items: center;
+    padding: 5px 5px 10px 5px;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    /* display: none; */
+  }
+
+
+  /* opcity  css to smothly show the dropdown*/
+  #drop_down_container {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.8s ease, visibility 0.8s ease;
+  }
+
+  #drop_down_container.show {
+    opacity: 1;
+    visibility: visible;
+  }
+
+
+
   .Diff-product-types-options {
     border: none;
     display: flex;
@@ -469,13 +701,73 @@
 
   .Diff-product-types-options>li {
     list-style: none;
-    /* border: 1px solid; */
+    /* border: 1px solid red; */
     font-size: 14px;
+    height: 100%;
+    display: grid;
+    place-items: center;
+    color: "#82818d",
   }
 
   .Diff-product-types-options>li>a {
     text-decoration: none;
     color: #82818d;
+
+  }
+
+  .Diff-product-types-options>li>a:hover {
+    color: red;
+    border-bottom: 2px solid red;
+  }
+
+
+  #All_Products_of_Aoption {
+    /* border: 3px solid blue; */
+    width: 98%;
+    height: 95%;
+    position: absolute;
+    z-index: 101;
+    padding: 5px;
+    justify-content: center;
+    text-align: center;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 5px;
+    overflow: auto;
+  }
+
+  #All_Products_of_Aoption>section {
+    /* border: 2px solid green; */
+    /* height: 100%; */
+    text-align: left;
+    padding: 0px 0px 0px 10px;
+  }
+
+  #All_Products_of_Aoption>section h3 {
+    font-size: 17px;
+
+  }
+
+  #All_Products_of_Aoption>section div {
+    /* border: 1px solid red; */
+  }
+
+  #All_Products_of_Aoption>section p {
+    font-size: 13px;
+    line-height: 25px;
+  }
+
+  #All_Products_of_Aoption>section p:hover {
+    /* transform: scale(0.8); */
+    padding: 2px;
+    background-color: #e80070;
+    color: white;
+    transition: padding 0.3s ease-in-out;
+  }
+
+
+  #All_Products_of_Aoption>section:nth-child(even) {
+    background-color: #e9e8ef;
   }
 
   /* .middleAndSmall-screen-header  CSS START *****************************/

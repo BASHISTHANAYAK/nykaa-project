@@ -316,7 +316,7 @@
   // let productsInTheUserCart = LoggedInUserDetails.CartProducts;
 
   // new
-  console.log("scr. start");
+  // console.log("scr. start");
   let LoggedUser = JSON.parse(sessionStorage.getItem("userDetails")); //from sessionStorage
   let allUsers = JSON.parse(localStorage.getItem("AllRegisteredUsers"));
   let LoggedInUserDetails = allUsers.find(
@@ -347,18 +347,18 @@
       if (productsInTheUserCarts.length === 0) {
         BagEmptyPart.style.display = "block";
         BagNonEmptySection.style.display = "none";
-        console.log("is productsInTheUserCart empty- yes");
+        // console.log("is productsInTheUserCart empty- yes");
         return;
       } else {
-        console.log("is productsInTheUserCart empty- no");
+        // console.log("is productsInTheUserCart empty- no");
 
         productsAndItsQuantityBOX.innerHTML = "";
         productsInTheUserCarts.forEach((obj, i) => {
-          console.log(
-            "productsInTheUserCart inside BOX",
-            productsInTheUserCarts
-          );
-          console.log(i);
+          // console.log(
+          //   "productsInTheUserCart inside BOX",
+          //   productsInTheUserCarts
+          // );
+          // console.log(i);
           let aProductDiv = document.createElement("div");
           aProductDiv.classList.add("products-And-ItsQuantity");
           aProductDiv.innerHTML = `
@@ -516,7 +516,7 @@
       .addEventListener("click", function (e) {
         if (e.target && e.target.classList.contains("delete")) {
           let clickedIndex = e.target.dataset.deleteindex;
-          console.log("clickedIndex-", clickedIndex);
+          // console.log("clickedIndex-", clickedIndex);
 
           // new
           allUsers = JSON.parse(localStorage.getItem("AllRegisteredUsers"));

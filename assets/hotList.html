@@ -226,7 +226,7 @@
   productContainers.forEach((item, i) => {
     let containerDimensions = item.getBoundingClientRect();
     let containerWidth = containerDimensions.width;
-    console.log(containerWidth);
+    // console.log(containerWidth);
     nxtBtn[i].addEventListener("click", () => {
       item.scrollLeft += containerWidth;
     });
@@ -243,32 +243,40 @@
     align-items: center;
     justify-content: space-between;
   }
+
   .product-card {
     cursor: pointer;
   }
+
   .product-card:hover {
+    transition: transform 0.2s ease-in-out;
     transform: scale(0.98);
-    border: 1px solid #f0e9e9;
+    border: 1px solid #e6e1e1;
   }
-  .HotList > h1,
+
+  .HotList>h1,
   p {
     margin: 2px;
   }
-  .HotList > h1 > span {
+
+  .HotList>h1>span {
     padding: 2px 4px;
     background-color: #e6f7fe;
     font-size: 12px;
     border-radius: 30px;
   }
+
   .ViewAll {
     color: #ec477f;
   }
+
   hr {
     border-color: #fafafa;
     height: 2px;
     background-color: #f0e9e9;
     border: none;
   }
+
   .Option-Buttons {
     background-color: white;
     border: none;
@@ -392,9 +400,11 @@
   .product-info p {
     margin: 3px 0px 5px 0px;
   }
+
   .Discount-Available {
     color: green;
   }
+
   .product-short-description {
     width: 100%;
     /* height: 20px; */
